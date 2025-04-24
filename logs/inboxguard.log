@@ -1,0 +1,59 @@
+2025-04-23 23:13:37 - app.services.dns.lookup - INFO - No TXT records found for default.gmail.com
+2025-04-23 23:13:37 - kombu.connection - WARNING - No hostname was supplied. Reverting to default 'localhost'
+2025-04-23 23:22:35 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-23 23:22:35 - kombu.connection - WARNING - No hostname was supplied. Reverting to default 'localhost'
+2025-04-23 23:23:50 - app.utils.validators - WARNING - Invalid domain format: google
+2025-04-23 23:23:50 - app.api.v1.endpoints.dns_verification - ERROR - Error verifying domain google: Invalid domain format: google
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/dns_verification.py", line 55, in verify_domain
+    validated_domain = validate_domain(domain)
+  File "/home/xyz/Inbox-guard/app/utils/validators.py", line 45, in validate_domain
+    raise ValidationError(f"Invalid domain format: {domain}")
+app.core.exceptions.ValidationError: Invalid domain format: google
+2025-04-23 23:26:04 - app.services.dns.lookup - INFO - No TXT records found for default.gmail.com
+2025-04-23 23:26:05 - kombu.connection - WARNING - No hostname was supplied. Reverting to default 'localhost'
+2025-04-23 23:27:42 - app.worker.celery_app - ERROR - Celery health check failed: 'NoneType' object has no attribute 'Redis'
+2025-04-23 23:34:20 - app.services.dns.lookup - INFO - No TXT records found for default.yahoo.com
+2025-04-23 23:34:20 - app.services.dns.lookup - INFO - No TXT records found for default.microsoft.com
+2025-04-23 23:34:21 - kombu.connection - WARNING - No hostname was supplied. Reverting to default 'localhost'
+2025-04-23 23:34:26 - app.services.dns.lookup - INFO - No TXT records found for default.example.com
+2025-04-24 03:39:54 - databases - INFO - Connected to database postgresql+psycopg2://inboxuser:********@localhost/inboxguard
+2025-04-24 04:07:19 - databases - INFO - Disconnected from database postgresql+psycopg2://inboxuser:********@localhost/inboxguard
+2025-04-24 04:07:22 - databases - INFO - Connected to database postgresql+psycopg2://inboxuser:********@localhost/inboxguard
+2025-04-24 04:10:21 - databases - INFO - Disconnected from database postgresql+psycopg2://inboxuser:********@localhost/inboxguard
+2025-04-24 04:10:23 - databases - INFO - Connected to database postgresql+psycopg2://inboxuser:********@localhost/inboxguard
+2025-04-24 04:31:59 - databases - INFO - Disconnected from database postgresql+psycopg2://inboxuser:********@localhost/inboxguard
+2025-04-24 13:54:00 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-24 14:30:06 - app.utils.validators - WARNING - Invalid domain format: hello@brightermonday.co.ke
+2025-04-24 14:30:06 - app.api.v1.endpoints.dns_verification - ERROR - Error verifying domain hello@brightermonday.co.ke: Invalid domain format: hello@brightermonday.co.ke
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/dns_verification.py", line 55, in verify_domain
+    validated_domain = validate_domain(domain)
+  File "/home/xyz/Inbox-guard/app/utils/validators.py", line 45, in validate_domain
+    raise ValidationError(f"Invalid domain format: {domain}")
+app.core.exceptions.ValidationError: Invalid domain format: hello@brightermonday.co.ke
+2025-04-24 14:31:24 - app.utils.validators - WARNING - Invalid domain format: noreply@notifications.freelancer.com
+2025-04-24 14:31:24 - app.api.v1.endpoints.dns_verification - ERROR - Error verifying domain noreply@notifications.freelancer.com: Invalid domain format: noreply@notifications.freelancer.com
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/dns_verification.py", line 55, in verify_domain
+    validated_domain = validate_domain(domain)
+  File "/home/xyz/Inbox-guard/app/utils/validators.py", line 45, in validate_domain
+    raise ValidationError(f"Invalid domain format: {domain}")
+app.core.exceptions.ValidationError: Invalid domain format: noreply@notifications.freelancer.com
+2025-04-24 14:32:11 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-24 14:33:07 - app.utils.validators - WARNING - Invalid domain format: no-reply@hello.redis.io
+2025-04-24 14:33:07 - app.api.v1.endpoints.dns_verification - ERROR - Error verifying domain no-reply@hello.redis.io: Invalid domain format: no-reply@hello.redis.io
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/dns_verification.py", line 55, in verify_domain
+    validated_domain = validate_domain(domain)
+  File "/home/xyz/Inbox-guard/app/utils/validators.py", line 45, in validate_domain
+    raise ValidationError(f"Invalid domain format: {domain}")
+app.core.exceptions.ValidationError: Invalid domain format: no-reply@hello.redis.io
+2025-04-24 14:42:24 - app.services.dns.lookup - INFO - No TXT records found for _dmarc.hello.redis.io
+2025-04-24 14:42:24 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.hello.redis.io
+2025-04-24 14:43:07 - app.services.dns.lookup - INFO - No TXT records found for _dmarc.dareymail.com
+2025-04-24 14:43:07 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.dareymail.com

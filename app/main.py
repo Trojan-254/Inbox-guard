@@ -1,0 +1,82 @@
+"""
+InboxGuard - Email DNS Verification System
+Main application entry point
+"""
+import logging
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from starlette.middleware.sessions import SessionMiddleware
+
+from app.api.v1.router import api_router
+from app.core.config import settings
+from app.core.logging import setup_logging
+from app.core.exceptions import InboxGuardException
+from app.db import database
+
+
+# Setup logging
+logger = logging.getLogger("__name__")
+logger.setLevel(logging.INFO)
+logger.info("Starting InboxGuard application...")
+setup_logging()
+
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    description="API for verifying and analyzing email DNS settings (SPF, DKIM, and DMARC)",
+    version="0.1.0",
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
+    docs_url=f"{settings.API_V1_STR}/docs",
+    redoc_url=f"{settings.API_V1_STR}/redoc",
+)
+
+# Set up CORS middleware
+if settings.BACKEND_CORS_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[str(origin) for origin in settings.BACKEND_CORS_ORIGINS],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+# Session middleware
+app.add_middleware(
+    SessionMiddleware,
+    secret_key=settings.SECRET_KEY,
+    session_cookie="inboxguard_session",
+    max_age=3600
+)
+
+
+
+# Include API router
+app.include_router(api_router, prefix=settings.API_V1_STR)
+
+# Database connection
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
+
+# Exception handler
+@app.exception_handler(InboxGuardException)
+async def inbox_guard_exception_handler(request: Request, exc: InboxGuardException):
+    """Handle application-specific exceptions"""
+    logger.error(f"Application error: {exc.detail}")
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail},
+    )
+
+@app.get("/", include_in_schema=False)
+async def root():
+    """Root endpoint redirects to API documentation"""
+    return {"message": f"Welcome to {settings.PROJECT_NAME}. See /api/v1/docs for API documentation."}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=settings.DEBUG)

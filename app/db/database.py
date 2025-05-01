@@ -3,17 +3,18 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import sessionmaker
 from contextlib import contextmanager
-import os
-from dotenv import load_dotenv
+from app.core.config import settings
+# import os
+# from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# # Load environment variables
+# load_dotenv()
 
-# Get database URL from environment variables
-SQL_ALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
+# # Get database URL from environment variables
+# DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Create SQLAlchemy engine
-engine = create_engine('postgresql+psycopg2://inboxuser:39944816@localhost/inboxguard')
+engine = create_engine(str(settings.DATABASE_URL))
 
 # Create session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

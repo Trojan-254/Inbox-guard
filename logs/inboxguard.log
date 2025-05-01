@@ -57,3 +57,571 @@ app.core.exceptions.ValidationError: Invalid domain format: no-reply@hello.redis
 2025-04-24 14:42:24 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.hello.redis.io
 2025-04-24 14:43:07 - app.services.dns.lookup - INFO - No TXT records found for _dmarc.dareymail.com
 2025-04-24 14:43:07 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.dareymail.com
+2025-04-24 15:27:44 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 11:34:25 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 11:44:20 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 12:34:51 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 12:36:08 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 12:43:18 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 15:21:09 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 15:30:03 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 15:30:51 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 15:38:46 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 15:42:03 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 17:12:58 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 19:00:06 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 19:17:44 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 20:27:19 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 20:41:19 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-25 21:19:26 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 09:18:11 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 13:17:08 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 14:03:42 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-26 14:03:42 - app.api.v1.endpoints.domains - ERROR - Error verifying domain example.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 14:03:48 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-04-26 14:03:48 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 14:21:57 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-26 14:21:58 - app.api.v1.endpoints.domains - ERROR - Error verifying domain redis.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 14:21:59 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-26 14:21:59 - app.api.v1.endpoints.domains - ERROR - Error verifying domain redis.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 14:22:01 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-26 14:22:01 - app.api.v1.endpoints.domains - ERROR - Error verifying domain redis.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 14:22:06 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-26 14:22:06 - app.api.v1.endpoints.domains - ERROR - Error verifying domain redis.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 15:10:15 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-26 15:10:16 - app.api.v1.endpoints.domains - ERROR - Error verifying domain redis.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 15:10:17 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-26 15:10:17 - app.api.v1.endpoints.domains - ERROR - Error verifying domain redis.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 15:10:19 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-26 15:10:19 - app.api.v1.endpoints.domains - ERROR - Error verifying domain redis.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 15:10:23 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-26 15:10:23 - app.api.v1.endpoints.domains - ERROR - Error verifying domain redis.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 18:49:24 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - DNS error looking up TXT record for google.com: All nameservers failed to answer the query google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - Error looking up SPF record for google.com: DNS error: All nameservers failed to answer the query google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 235, in lookup_txt_record
+    txt_records = await loop.run_in_executor(
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 237, in <lambda>
+    lambda: resolver.resolve(domain, 'TXT')
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 1317, in resolve
+    (nameserver, tcp, backoff) = resolution.next_nameserver()
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 764, in next_nameserver
+    raise NoNameservers(request=self.request, errors=self.errors)
+dns.resolver.NoNameservers: All nameservers failed to answer the query google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 144, in lookup_and_analyze_spf
+    spf_record = await lookup_txt_record(domain)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 251, in lookup_txt_record
+    raise DNSLookupError(f"DNS error: {str(e)}")
+app.core.exceptions.DNSLookupError: DNS error: All nameservers failed to answer the query google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - DNS error looking up TXT record for _domainkey.google.com: All nameservers failed to answer the query _domainkey.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - Error looking up DKIM record for google.com with selector _domainkey: DNS error: All nameservers failed to answer the query _domainkey.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 235, in lookup_txt_record
+    txt_records = await loop.run_in_executor(
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 237, in <lambda>
+    lambda: resolver.resolve(domain, 'TXT')
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 1317, in resolve
+    (nameserver, tcp, backoff) = resolution.next_nameserver()
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 764, in next_nameserver
+    raise NoNameservers(request=self.request, errors=self.errors)
+dns.resolver.NoNameservers: All nameservers failed to answer the query _domainkey.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 172, in lookup_and_analyze_dkim
+    dkim_record = await lookup_txt_record(dkim_domain)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 251, in lookup_txt_record
+    raise DNSLookupError(f"DNS error: {str(e)}")
+app.core.exceptions.DNSLookupError: DNS error: All nameservers failed to answer the query _domainkey.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - DNS error looking up TXT record for _dmarc.google.com: All nameservers failed to answer the query _dmarc.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - Error looking up DMARC record for google.com: DNS error: All nameservers failed to answer the query _dmarc.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 235, in lookup_txt_record
+    txt_records = await loop.run_in_executor(
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 237, in <lambda>
+    lambda: resolver.resolve(domain, 'TXT')
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 1317, in resolve
+    (nameserver, tcp, backoff) = resolution.next_nameserver()
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 764, in next_nameserver
+    raise NoNameservers(request=self.request, errors=self.errors)
+dns.resolver.NoNameservers: All nameservers failed to answer the query _dmarc.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 199, in lookup_and_analyze_dmarc
+    dmarc_record = await lookup_txt_record(dmarc_domain)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 251, in lookup_txt_record
+    raise DNSLookupError(f"DNS error: {str(e)}")
+app.core.exceptions.DNSLookupError: DNS error: All nameservers failed to answer the query _dmarc.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - Error analyzing SPF for google.com: Error looking up SPF record: DNS error: All nameservers failed to answer the query google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - Error analyzing DKIM for google.com: Error looking up DKIM record: DNS error: All nameservers failed to answer the query _domainkey.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.services.dns.lookup - ERROR - Error analyzing DMARC for google.com: Error looking up DMARC record: DNS error: All nameservers failed to answer the query _dmarc.google.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:55:52 - app.api.v1.endpoints.domains - ERROR - Error verifying domain google.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - DNS error looking up TXT record for _domainkey.github.com: All nameservers failed to answer the query _domainkey.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - Error looking up DKIM record for github.com with selector _domainkey: DNS error: All nameservers failed to answer the query _domainkey.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 235, in lookup_txt_record
+    txt_records = await loop.run_in_executor(
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 237, in <lambda>
+    lambda: resolver.resolve(domain, 'TXT')
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 1317, in resolve
+    (nameserver, tcp, backoff) = resolution.next_nameserver()
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 764, in next_nameserver
+    raise NoNameservers(request=self.request, errors=self.errors)
+dns.resolver.NoNameservers: All nameservers failed to answer the query _domainkey.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 172, in lookup_and_analyze_dkim
+    dkim_record = await lookup_txt_record(dkim_domain)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 251, in lookup_txt_record
+    raise DNSLookupError(f"DNS error: {str(e)}")
+app.core.exceptions.DNSLookupError: DNS error: All nameservers failed to answer the query _domainkey.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - DNS error looking up TXT record for github.com: All nameservers failed to answer the query github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - Error looking up SPF record for github.com: DNS error: All nameservers failed to answer the query github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 235, in lookup_txt_record
+    txt_records = await loop.run_in_executor(
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 237, in <lambda>
+    lambda: resolver.resolve(domain, 'TXT')
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 1317, in resolve
+    (nameserver, tcp, backoff) = resolution.next_nameserver()
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 764, in next_nameserver
+    raise NoNameservers(request=self.request, errors=self.errors)
+dns.resolver.NoNameservers: All nameservers failed to answer the query github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 144, in lookup_and_analyze_spf
+    spf_record = await lookup_txt_record(domain)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 251, in lookup_txt_record
+    raise DNSLookupError(f"DNS error: {str(e)}")
+app.core.exceptions.DNSLookupError: DNS error: All nameservers failed to answer the query github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - DNS error looking up TXT record for _dmarc.github.com: All nameservers failed to answer the query _dmarc.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - Error looking up DMARC record for github.com: DNS error: All nameservers failed to answer the query _dmarc.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 235, in lookup_txt_record
+    txt_records = await loop.run_in_executor(
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 237, in <lambda>
+    lambda: resolver.resolve(domain, 'TXT')
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 1317, in resolve
+    (nameserver, tcp, backoff) = resolution.next_nameserver()
+  File "/home/xyz/env/lib/python3.10/site-packages/dns/resolver.py", line 764, in next_nameserver
+    raise NoNameservers(request=self.request, errors=self.errors)
+dns.resolver.NoNameservers: All nameservers failed to answer the query _dmarc.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 199, in lookup_and_analyze_dmarc
+    dmarc_record = await lookup_txt_record(dmarc_domain)
+  File "/home/xyz/Inbox-guard/app/services/dns/lookup.py", line 251, in lookup_txt_record
+    raise DNSLookupError(f"DNS error: {str(e)}")
+app.core.exceptions.DNSLookupError: DNS error: All nameservers failed to answer the query _dmarc.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - Error analyzing SPF for github.com: Error looking up SPF record: DNS error: All nameservers failed to answer the query github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - Error analyzing DKIM for github.com: Error looking up DKIM record: DNS error: All nameservers failed to answer the query _domainkey.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.services.dns.lookup - ERROR - Error analyzing DMARC for github.com: Error looking up DMARC record: DNS error: All nameservers failed to answer the query _dmarc.github.com. IN TXT: Server Do53:127.0.0.53@53 answered SERVFAIL
+2025-04-26 18:58:12 - app.api.v1.endpoints.domains - ERROR - Error verifying domain github.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 19:03:30 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:03:30 - app.api.v1.endpoints.domains - ERROR - Error verifying domain google.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 19:04:13 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 19:04:30 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:04:30 - app.api.v1.endpoints.domains - ERROR - Error verifying domain google.com: 'dict' object has no attribute 'spf_analysis'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 133, in verify_domain
+    if domain_request.check_spf and verification_result.spf_analysis:
+AttributeError: 'dict' object has no attribute 'spf_analysis'
+2025-04-26 19:11:52 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 19:12:17 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:12:17 - app.api.v1.endpoints.domains - ERROR - Error verifying domain google.com: 'dict' object has no attribute 'overall_status'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 168, in verify_domain
+    "overall_status": verification_result.overall_status
+AttributeError: 'dict' object has no attribute 'overall_status'
+2025-04-26 19:14:36 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 19:15:07 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:15:44 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:17:03 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:17:40 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:17:56 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:18:06 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:20:04 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:20:13 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:22:05 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:22:15 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:22:17 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:22:18 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:26:31 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:26:40 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:29:52 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-26 19:37:30 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:37:35 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:38:40 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-26 19:38:51 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-26 19:49:34 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 19:49:54 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:50:33 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 19:50:58 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.github.com
+2025-04-26 19:54:33 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-26 19:54:50 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-26 19:58:24 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-26 20:02:58 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-27 21:51:14 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-27 21:52:53 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-27 21:53:11 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-27 21:53:17 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-27 21:59:51 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-27 22:00:42 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-27 22:02:11 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-27 22:51:26 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-27 23:01:26 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-04-28 09:23:22 - app.api.v1.endpoints.google_oauth - ERROR - Google authentication error: 'id_token'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/google_oauth.py", line 54, in google_auth
+    user_info = await google.parse_id_token(request, token)
+  File "/home/xyz/env/lib/python3.10/site-packages/authlib/integrations/base_client/async_openid.py", line 63, in parse_id_token
+    token["id_token"],
+  File "/home/xyz/env/lib/python3.10/site-packages/starlette/requests.py", line 81, in __getitem__
+    return self.scope[key]
+KeyError: 'id_token'
+2025-04-28 10:09:28 - app.api.v1.endpoints.google_oauth - ERROR - Google authentication error: secret must be unicode or bytes, not None
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/google_oauth.py", line 74, in google_auth
+    user = create_user(
+  File "/home/xyz/Inbox-guard/app/users/crud.py", line 33, in create_user
+    hashed_password = pwd_context.hash(password)
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/utils/handlers.py", line 777, in hash
+    validate_secret(secret)
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/utils/handlers.py", line 122, in validate_secret
+    raise exc.ExpectedStringError(secret, "secret")
+TypeError: secret must be unicode or bytes, not None
+2025-04-28 10:13:15 - app.api.v1.endpoints.google_oauth - ERROR - Google authentication error: (psycopg2.errors.NotNullViolation) null value in column "hashed_password" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (7, samwuels003@gmail.com, null, Sam, 107481326322690916717, 2025-04-28 07:13:15.273646, null).
+
+[SQL: INSERT INTO users (email, hashed_password, name, google_id, created_at, last_login) VALUES (%(email)s, %(hashed_password)s, %(name)s, %(google_id)s, %(created_at)s, %(last_login)s) RETURNING users.id]
+[parameters: {'email': 'samwuels003@gmail.com', 'hashed_password': None, 'name': 'Sam', 'google_id': '107481326322690916717', 'created_at': datetime.datetime(2025, 4, 28, 7, 13, 15, 273646), 'last_login': None}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.NotNullViolation: null value in column "hashed_password" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (7, samwuels003@gmail.com, null, Sam, 107481326322690916717, 2025-04-28 07:13:15.273646, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/google_oauth.py", line 74, in google_auth
+    user = create_user(
+  File "/home/xyz/Inbox-guard/app/users/crud.py", line 44, in create_user
+    db.commit()
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4353, in flush
+    self._flush(objects)
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4488, in _flush
+    with util.safe_reraise():
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 4449, in _flush
+    flush_context.execute()
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/orm/persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    return meth(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1638, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1843, in _execute_context
+    return self._exec_single_context(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1983, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2352, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1964, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/xyz/env/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 945, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.NotNullViolation) null value in column "hashed_password" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (7, samwuels003@gmail.com, null, Sam, 107481326322690916717, 2025-04-28 07:13:15.273646, null).
+
+[SQL: INSERT INTO users (email, hashed_password, name, google_id, created_at, last_login) VALUES (%(email)s, %(hashed_password)s, %(name)s, %(google_id)s, %(created_at)s, %(last_login)s) RETURNING users.id]
+[parameters: {'email': 'samwuels003@gmail.com', 'hashed_password': None, 'name': 'Sam', 'google_id': '107481326322690916717', 'created_at': datetime.datetime(2025, 4, 28, 7, 13, 15, 273646), 'last_login': None}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-04-28 10:24:10 - app.api.v1.endpoints.google_oauth - ERROR - Google authentication error: mismatching_state: CSRF Warning! State not equal in request and response.
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/google_oauth.py", line 53, in google_auth
+    token = await google.authorize_access_token(request)
+  File "/home/xyz/env/lib/python3.10/site-packages/authlib/integrations/starlette_client/apps.py", line 83, in authorize_access_token
+    params = self._format_state_params(state_data, params)
+  File "/home/xyz/env/lib/python3.10/site-packages/authlib/integrations/base_client/sync_app.py", line 260, in _format_state_params
+    raise MismatchingStateError()
+authlib.integrations.base_client.errors.MismatchingStateError: mismatching_state: CSRF Warning! State not equal in request and response.
+2025-04-28 10:42:39 - app.api.v1.endpoints.google_oauth - ERROR - Google authentication error: mismatching_state: CSRF Warning! State not equal in request and response.
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/google_oauth.py", line 53, in google_auth
+    token = await google.authorize_access_token(request)
+  File "/home/xyz/env/lib/python3.10/site-packages/authlib/integrations/starlette_client/apps.py", line 83, in authorize_access_token
+    params = self._format_state_params(state_data, params)
+  File "/home/xyz/env/lib/python3.10/site-packages/authlib/integrations/base_client/sync_app.py", line 260, in _format_state_params
+    raise MismatchingStateError()
+authlib.integrations.base_client.errors.MismatchingStateError: mismatching_state: CSRF Warning! State not equal in request and response.
+2025-04-28 11:13:00 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-28 11:13:17 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-28 17:05:19 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-28 17:33:14 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-28 17:33:20 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-28 17:35:20 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-28 17:35:26 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-28 17:35:59 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-28 17:41:03 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-28 20:01:04 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-28 20:56:04 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-28 21:06:15 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-28 21:08:44 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-29 00:08:58 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-29 01:30:28 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-29 01:30:29 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-29 01:30:30 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-29 01:30:30 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-29 01:30:43 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-04-29 11:46:32 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-29 12:03:35 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-04-29 12:03:47 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-04-30 09:27:40 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-04-30 12:49:46 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-04-30 12:50:48 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com

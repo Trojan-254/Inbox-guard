@@ -38,11 +38,6 @@ class Token(BaseModel):
     email: str
 
 
-class TokenData(BaseModel):
-    """Token data model"""
-    email: Optional[str] = None
-
-
 class UserCreate(BaseModel):
     """User creation model"""
     email: EmailStr
@@ -62,8 +57,27 @@ class UserResponse(BaseModel):
         orm_mode = True
 
 
-# Helper functions
-def create_access_token(data: dict, expires_delta: timedelta = None):
+def verify_password(plain_password, hashed_password):
+    """Verify password against hash"""
+    return pwd_context.verify(plain_password, hashed_password)
+
+def get_password_hash(password):
+    """Hash a password"""
+    return pwd_context.hash(password)
+
+def authenticate_user(db: Session, email: str, password: str):
+    """Authenticate a user"""
+    user = get_user_by_email(db, email)
+    if not user:
+        return False
+    # If user was created with Google and has no password
+    if user.hashed_password is None:
+        return False
+    if not verify_password(password, user.hashed_password):
+        return False
+    return user
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     """Create JWT access token"""
     to_encode = data.copy()
     
@@ -75,7 +89,6 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt, expire
- 
 
 async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     """Get current user from token"""
@@ -90,15 +103,33 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = De
         email: str = payload.get("sub")
         if email is None:
             raise credentials_exception
-        token_data = TokenData(email=email)
     except JWTError:
         raise credentials_exception
     
-    user = get_user_by_email(db, email=token_data.email)
+    user = get_user_by_email(db, email=email)
     if user is None:
         raise credentials_exception
     
     return user
+
+
+
+# Helper functions
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+    """Create JWT access token"""
+    to_encode = data.copy()
+    
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+    return encoded_jwt, expire
+ 
+
+
 
 
 # Routes
@@ -115,7 +146,9 @@ async def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
     
     # Create user
     try:
-        user = create_user(db, user_data.email, user_data.password, user_data.name)
+        # Hash password
+        hashed_password = get_password_hash(user_data.password)
+        user = create_user(db, user_data.email, hashed_password, user_data.name)
         # Log user registration
         create_audit_log(db, user.id, "user_registered", {"registration_method": "email"})
         return user

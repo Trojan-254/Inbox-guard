@@ -2,6 +2,10 @@
 InboxGuard - Email DNS Verification System
 Main application entry point
 """
+
+import os
+from dotenv import load_dotenv
+from pathlib import Path
 import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,10 +13,14 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.sessions import SessionMiddleware
 
 from app.api.v1.router import api_router
-from app.core.config import settings
 from app.core.logging import setup_logging
 from app.core.exceptions import InboxGuardException
 from app.db import database
+
+env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
+
+from app.core.config import settings
 
 
 # Setup logging
@@ -31,14 +39,14 @@ app = FastAPI(
 )
 
 # Set up CORS middleware
-if settings.BACKEND_CORS_ORIGINS:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=[str(origin) for origin in settings.BACKEND_CORS_ORIGINS],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+# if settings.BACKEND_CORS_ORIGINS:
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins="http://localhost:8080",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Session middleware
 app.add_middleware(

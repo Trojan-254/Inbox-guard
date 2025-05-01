@@ -2,10 +2,17 @@
 App configuration settings.
 """
 
+import os
 import secrets
+from pathlib import Path
 from typing import List, Optional, Union, Dict, Any
 from pydantic import AnyHttpUrl, validator, PostgresDsn
 from pydantic_settings import BaseSettings
+from dotenv import load_dotenv
+
+env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
+
 
 class Settings(BaseSettings):
     """Application setting class"""
@@ -19,25 +26,6 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
 
-    # # Database settings
-    # POSTGRES_SERVER: str
-    # POSTGRES_USER: str
-    # POSTGRES_PASSWORD: str
-    # POSTGRES_DB: str
-    # SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
-
-    # @validator("SQLALCHEMY_DATABASE_URI", pre=True)
-    # def assemble_db_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
-    #     if isinstance(v, str):
-    #         return v
-    #     return PostgresDsn.build(
-    #         scheme="postgresql",
-    #         user=values.get("POSTGRES_USER"),
-    #         password=values.get("POSTGRES_PASSWORD"),
-    #         host=values.get("POSTGRES_SERVER"),
-    #         path=f"/{values.get('POSTGRES_DB') or ''}",
-    #     )
-
     # CORS settings
     BACKEND_CORS_ORIGINS: List[Union[str, AnyHttpUrl]] = []
 
@@ -50,9 +38,13 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
-         # DNS service settings
+    # Database settings
+    DATABASE_URL: PostgresDsn 
+
+    # DNS service settings
     DNS_RESOLVER_TIMEOUT: int = 5  # seconds
     DNS_RESOLVER_LIFETIME: int = 10  # seconds
+
     
     # Celery settings
     CELERY_BROKER_URL: str = "redis://localhost:6379/0"
@@ -61,10 +53,17 @@ class Settings(BaseSettings):
     # Logging
     LOG_LEVEL: str = "INFO"
     
+    # Google OAuth settings
+    GOOGLE_CLIENT_ID: str 
+    GOOGLE_CLIENT_SECRET: str 
+    GOOGLE_REDIRECT_URI: str #"http://localhost:8000/api/v1/auth/google/callback"
+    
+    # Frontend URL for redirects after authentication
+    FRONTEND_URL: str
+    
     class Config:
         """Pydantic config"""
         case_sensitive = True
         env_file = ".env"
-
 
 settings = Settings()

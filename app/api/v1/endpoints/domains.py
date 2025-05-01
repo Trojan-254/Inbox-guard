@@ -5,23 +5,32 @@ import logging
 from typing import Dict, List, Optional
 from datetime import datetime
 from fastapi import APIRouter, BackgroundTasks, HTTPException, Query, Path, Depends
-from pydantic import BaseModel, EmailStr, HttpUrl
+from pydantic import BaseModel, EmailStr, HttpUrl, Field, ValidationError
 from sqlalchemy.orm import Session
 
 from app.services.dns.lookup import verify_domain_dns
 from app.worker.tasks import run_scheduled_verification
-from app.utils.validators import validate_domain
-from app.db.session import get_db
-from app.models.user import User
-from app.models.domain import Domain
-from app.models.dns_record import DNSRecord, RecordType, RecordStatus
-from app.crud.domain import create_domain, get_domain_by_id, get_domain_by_name, update_domain_last_checked
-from app.crud.dns_record import create_or_update_dns_record, get_domain_dns_records
-from app.crud.audit_log import create_audit_log
-from app.api.deps import get_current_user
+from app.utils.validators import validate_domain, extract_original_input
+from app.db.database import get_db
+from app.db.models import User
+from app.db.models import Domain
+from app.db.models import DNSRecord, RecordType, RecordStatus
+from app.users.crud import create_domain, get_domain_by_id, get_domain_by_name, update_domain_last_checked
+from app.users.crud import create_or_update_dns_record, get_domain_dns_records
+from app.users.crud import create_audit_log
+from .auth import get_current_user
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
+
+class RecordAnalysis(BaseModel):
+    """Analysis results for a single DNS record"""
+    record_type: str
+    status: str  # "valid", "warning", "critical", "pending"
+    value: Optional[str] = None
+    issues: List[str] = []
+    recommendations: List[str] = []
+    last_checked: Optional[datetime] = None
 
 
 class DomainVerificationRequest(BaseModel):
@@ -32,16 +41,6 @@ class DomainVerificationRequest(BaseModel):
     check_dmarc: bool = True
     email_selector: Optional[str] = "_domainkey"
 
-
-class RecordAnalysis(BaseModel):
-    """Analysis results for a single DNS record"""
-    record_type: str
-    status: str  # "valid", "warning", "critical", "pending"
-    value: Optional[str] = None
-    issues: List[str] = []
-    recommendations: List[str] = []
-
-
 class DomainVerificationResponse(BaseModel):
     """Response model for domain verification results"""
     domain: str
@@ -50,6 +49,55 @@ class DomainVerificationResponse(BaseModel):
     dkim_analysis: Optional[RecordAnalysis] = None
     dmarc_analysis: Optional[RecordAnalysis] = None
     timestamp: str
+
+
+class DomainAddRequest(BaseModel):
+    """Request model for adding a domain or email"""
+    domain_or_email: str = Field(..., description="Domain name (e.g. example.com) or email address (e.g. noreply@example.com)")
+    notes: Optional[str] = Field(None, description="Optional notes about this domain")
+
+class DomainAddResponse(BaseModel):
+    """Response model for domain addition"""
+    domain: str
+    original_input: str
+    input_type: str
+    id: int
+    success: bool
+    message: str
+    email_prefix: Optional[str] = None
+
+
+class BulkDomainAddRequest(BaseModel):
+    """Request model for adding multiple domains"""
+    domains_or_emails: List[str]
+    notes: Optional[str] = None
+
+
+class BulkDomainAddResponse(BaseModel):
+    """Response model for bulk domain addition"""
+    results: List[DomainAddResponse]
+    success_count: int
+    failure_count: int
+
+class DomainDeleteRequest(BaseModel):
+    """Request model for deleting a domain"""
+    domain_id: int = Field(..., description="ID of the domain to delete")
+    notes: Optional[str] = Field(None, description="Optional notes about this domain deletion")
+
+class DomainDeleteResponse(BaseModel):
+    """Response model for domain deletion"""
+    domain_id: int
+    success: bool
+    message: str
+
+
+class DomainModel(BaseModel):
+    """Model for domain creation with additional metadata"""
+    domain_name: str
+    original_input: str
+    input_type: str
+    email_prefix: Optional[str] = None
+    notes: Optional[str] = None
 
 
 @router.post("/verify", response_model=DomainVerificationResponse)
@@ -92,31 +140,31 @@ async def verify_domain(
         update_domain_last_checked(db, domain_db.id)
         
         # Store DNS record results in database
-        if domain_request.check_spf and verification_result.spf_analysis:
+        if domain_request.check_spf and "spf_analysis" in verification_result:
             create_or_update_dns_record(
                 db,
                 domain_id=domain_db.id,
                 record_type=RecordType.SPF,
-                status=parse_status(verification_result.spf_analysis.status),
-                record_value=verification_result.spf_analysis.value
+                status=parse_status(verification_result["spf_analysis"]["status"]),
+                record_value=verification_result["spf_analysis"]["value"]
             )
-        
-        if domain_request.check_dkim and verification_result.dkim_analysis:
+
+        if domain_request.check_dkim and "dkim_analysis" in verification_result:
             create_or_update_dns_record(
                 db,
                 domain_id=domain_db.id,
                 record_type=RecordType.DKIM,
-                status=parse_status(verification_result.dkim_analysis.status),
-                record_value=verification_result.dkim_analysis.value
+                status=parse_status(verification_result["dkim_analysis"]["status"]),
+                record_value=verification_result["dkim_analysis"]["value"]
             )
-        
-        if domain_request.check_dmarc and verification_result.dmarc_analysis:
+
+        if domain_request.check_dmarc and "dmarc_analysis" in verification_result:
             create_or_update_dns_record(
                 db,
                 domain_id=domain_db.id,
                 record_type=RecordType.DMARC,
-                status=parse_status(verification_result.dmarc_analysis.status),
-                record_value=verification_result.dmarc_analysis.value
+                status=parse_status(verification_result["dmarc_analysis"]["status"]),
+                record_value=verification_result["dmarc_analysis"]["value"]
             )
         
         # Create audit log for domain verification
@@ -127,7 +175,7 @@ async def verify_domain(
             {
                 "domain_id": domain_db.id, 
                 "domain_name": validated_domain,
-                "overall_status": verification_result.overall_status
+                "overall_status": verification_result["overall_status"]
             }
         )
         
@@ -150,6 +198,7 @@ async def verify_domain(
     except Exception as e:
         logger.exception(f"Error verifying domain {domain_name}: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal server error during domain verification")
+
 
 
 @router.get("/history/{domain}", response_model=List[DomainVerificationResponse])
@@ -228,10 +277,11 @@ async def get_user_domains(
     current_user: User = Depends(get_current_user)
 ):
     """Get all domains for the current user with their latest verification status"""
-    from app.crud.domain import get_user_domains
+    from app.users.crud import get_user_domains
     
-    domains = get_user_domains(db, user_id=current_user.id)
+    domains = await get_user_domains(db, user_id=current_user.id)
     results = []
+    print("Domain got:  {}", domains)
     
     for domain in domains:
         # Get the latest record for each type
@@ -264,6 +314,180 @@ async def get_user_domains(
     return results
 
 
+@router.post("/add", response_model=DomainAddResponse)
+async def add_domain(
+    domain_request: DomainAddRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Add a domain to the user's account, supporting both domain names and email addresses"""
+    try:
+        print(f"Adding domain: {domain_request.domain_or_email}")
+        # Extract information from the input
+        parsed_info = extract_original_input(domain_request.domain_or_email)
+        domain = parsed_info["domain"]
+        
+        # Validate the domain
+        validated_domain = validate_domain(domain)
+        
+        # Prepare domain model with metadata
+        domain_model = DomainModel(
+            domain_name=validated_domain,
+            original_input=parsed_info["original"],
+            input_type=parsed_info["input_type"],
+            email_prefix=parsed_info.get("email_prefix"),
+            notes=domain_request.notes
+        )
+        
+        # Check if domain already exists for this user
+        existing_domain = get_domain_by_name(db, domain_name=validated_domain, user_id=current_user.id)
+        if existing_domain:
+            return DomainAddResponse(
+                domain=validated_domain,
+                original_input=parsed_info["original"],
+                input_type=parsed_info["input_type"],
+                email_prefix=parsed_info.get("email_prefix"),
+                id=existing_domain.id,
+                success=False,
+                message="Domain already exists for this user"
+            )
+        
+        # Create the domain in the database
+        # Note: The create_domain function might need to be updated to handle the additional metadata
+        domain_db = create_domain(db, user_id=current_user.id, domain_name=validated_domain)
+        
+        # Store additional metadata in audit log
+        metadata = {
+            "domain_id": domain_db.id, 
+            "domain_name": validated_domain,
+            "original_input": parsed_info["original"],
+            "input_type": parsed_info["input_type"],
+            "notes": domain_request.notes
+        }
+        
+        if "email_prefix" in parsed_info:
+            metadata["email_prefix"] = parsed_info["email_prefix"]
+        
+        # Create audit log for domain creation
+        create_audit_log(
+            db, 
+            current_user.id, 
+            "domain_created", 
+            metadata
+        )
+        
+        return DomainAddResponse(
+            domain=validated_domain,
+            original_input=parsed_info["original"],
+            input_type=parsed_info["input_type"],
+            email_prefix=parsed_info.get("email_prefix"),
+            id=domain_db.id,
+            success=True,
+            message="Domain added successfully"
+        )
+    
+    except ValidationError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error adding domain: {str(e)}")
+
+
+@router.post("/bulk-add", response_model=BulkDomainAddResponse)
+async def add_multiple_domains(
+    bulk_request: BulkDomainAddRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Add multiple domains to the user's account in bulk, supporting both domain names and email addresses"""
+    results = []
+    success_count = 0
+    failure_count = 0
+    
+    for domain_or_email in bulk_request.domains_or_emails:
+        try:
+            # Extract information from the input
+            parsed_info = extract_original_input(domain_or_email)
+            domain = parsed_info["domain"]
+            
+            # Validate the domain
+            validated_domain = validate_domain(domain)
+            
+            # Check if domain already exists for this user
+            existing_domain = get_domain_by_name(db, domain_name=validated_domain, user_id=current_user.id)
+            if existing_domain:
+                results.append(DomainAddResponse(
+                    domain=validated_domain,
+                    original_input=parsed_info["original"],
+                    input_type=parsed_info["input_type"],
+                    email_prefix=parsed_info.get("email_prefix"),
+                    id=existing_domain.id,
+                    success=False,
+                    message="Domain already exists for this user"
+                ))
+                failure_count += 1
+                continue
+            
+            # Create the domain in the database
+            domain_db = create_domain(db, user_id=current_user.id, domain_name=validated_domain)
+            
+            # Store additional metadata in audit log
+            metadata = {
+                "domain_id": domain_db.id, 
+                "domain_name": validated_domain,
+                "original_input": parsed_info["original"],
+                "input_type": parsed_info["input_type"],
+                "notes": bulk_request.notes
+            }
+            
+            if "email_prefix" in parsed_info:
+                metadata["email_prefix"] = parsed_info["email_prefix"]
+            
+            # Create audit log for domain creation
+            create_audit_log(
+                db, 
+                current_user.id, 
+                "domain_created", 
+                metadata
+            )
+            
+            results.append(DomainAddResponse(
+                domain=validated_domain,
+                original_input=parsed_info["original"],
+                input_type=parsed_info["input_type"],
+                email_prefix=parsed_info.get("email_prefix"),
+                id=domain_db.id,
+                success=True,
+                message="Domain added successfully"
+            ))
+            success_count += 1
+            
+        except ValidationError as e:
+            results.append(DomainAddResponse(
+                domain=domain_or_email,
+                original_input=domain_or_email,
+                input_type="unknown",
+                id=0,
+                success=False,
+                message=str(e)
+            ))
+            failure_count += 1
+        except Exception as e:
+            results.append(DomainAddResponse(
+                domain=domain_or_email,
+                original_input=domain_or_email,
+                input_type="unknown",
+                id=0,
+                success=False,
+                message=f"Error adding domain: {str(e)}"
+            ))
+            failure_count += 1
+    
+    return BulkDomainAddResponse(
+        results=results,
+        success_count=success_count,
+        failure_count=failure_count
+    )
+
 # Helper function to parse status string to enum
 def parse_status(status: str) -> RecordStatus:
     """Parse status string to RecordStatus enum"""
@@ -275,3 +499,36 @@ def parse_status(status: str) -> RecordStatus:
         return RecordStatus.CRITICAL
     else:
         return RecordStatus.PENDING
+
+
+
+@router.delete("/delete/{domain_id}", response_model=DomainDeleteResponse)
+async def delete_domain(
+    domain_id: int = Path(..., desccription="ID of the domain to delete"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Delete a domain from the user's account"""
+    try:
+        #check if the domain exists
+        domain = get_domain_by_id(db, domain_id=domain_id, user_id=current_user_id)
+        if not domain:
+            raise HTTPException(status_code=404, detail="Domain not found")
+        #delete the domain
+        db.delete(domain)
+        db.commit()
+        #create audit log
+        create_audit_log(
+            db, 
+            current_user.id, 
+            "domain_deleted", 
+            {"domain_id": domain_id}
+        )
+        return DomainDeleteResponse(
+            domain_id=domain_id,
+            success=True,
+            message="Domain deleted successfully"
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error deleting domain: {str(e)}")
+   

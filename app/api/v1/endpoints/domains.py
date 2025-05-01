@@ -99,6 +99,106 @@ class DomainModel(BaseModel):
     email_prefix: Optional[str] = None
     notes: Optional[str] = None
 
+class DnsRecommendation(BaseModel):
+    """Model for DNS record recommendations"""
+    record_type: str
+    current_value: Optional[str] = None
+    issues: List[str]
+    recommendations: List[str] = []
+    recommendation_value: str
+
+class DnsReccomendationResponse(BaseModel):
+    """Response model for DNS record recommendations"""
+    domain: str
+    spf_recommendation: Optional[DnsRecommendation] = None
+    dkim_recommendation: Optional[DnsRecommendation] = None
+    dmarc_recommendation: Optional[DnsRecommendation] = None
+
+
+@router.get("/recommendations/{domain_id}", response_model=DnsReccomendationResponse)
+async def get_dns_recommendations(
+    domain_id: int = Path(..., description="ID of the domain to get recommendations for"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """Get recommendations for fixing DNS records for a domain"""
+    try:
+        # Get the domain
+        domain = get_domain_by_id(db, domain_id=domain_id, user_id=current_user.id)
+        if not domain:
+            raise HTTPException(status_code=404, detail="Domain not found")
+        
+        # Get the latest DNS records for the domain
+        records = get_domain_dns_records(db, domain_id=domain_id, limit=3)
+        
+        # Initialize response
+        response = DnsRecommendationsResponse(domain=domain.domain_name)
+        
+        # Process each record type
+        for record in records:
+            recommendation = DnsRecommendation(
+                record_type=record.type.value,
+                current_value=record.record_value
+            )
+            
+            # Add record-specific recommendations
+            if record.type == RecordType.SPF:
+                if record.status != RecordStatus.VALID:
+                    recommendation.issues = ["SPF record is missing or invalid", 
+                                            "Email authentication may fail"]
+                    recommendation.recommendations = ["Add an SPF record to authenticate your email servers"]
+                    # Generate recommended SPF record based on domain
+                    recommendation.recommended_value = f"v=spf1 include:_spf.{domain.domain_name} include:_spf.google.com ~all"
+                    response.spf_recommendation = recommendation
+            
+            elif record.type == RecordType.DKIM:
+                if record.status != RecordStatus.VALID:
+                    recommendation.issues = ["DKIM record is missing or invalid", 
+                                            "Emails may be marked as spam or rejected"]
+                    recommendation.recommendations = ["Add a DKIM record to sign your emails"]
+                    # Generate recommended DKIM record
+                    recommendation.recommended_value = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyYgM5v53V/AdQz+F..."
+                    response.dkim_recommendation = recommendation
+            
+            elif record.type == RecordType.DMARC:
+                if record.status != RecordStatus.VALID:
+                    recommendation.issues = ["DMARC record is missing or invalid", 
+                                            "Email security and reporting is incomplete"]
+                    recommendation.recommendations = ["Add a DMARC record to protect your domain from email spoofing"]
+                    # Generate recommended DMARC record
+                    recommendation.recommended_value = f"v=DMARC1; p=quarantine; rua=mailto:dmarc@{domain.domain_name}; pct=100"
+                    response.dmarc_recommendation = recommendation
+        
+        # If no existing records found, generate defaults
+        if not response.spf_recommendation:
+            response.spf_recommendation = DnsRecommendation(
+                record_type="SPF",
+                issues=["No SPF record found", "Email authentication may fail"],
+                recommendations=["Add an SPF record to authenticate your email servers"],
+                recommended_value=f"v=spf1 include:_spf.{domain.domain_name} include:_spf.google.com ~all"
+            )
+        
+        if not response.dkim_recommendation:
+            response.dkim_recommendation = DnsRecommendation(
+                record_type="DKIM",
+                issues=["No DKIM record found", "Emails may be marked as spam or rejected"],
+                recommendations=["Add a DKIM record to sign your emails"],
+                recommended_value="v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyYgM5v53V/AdQz+F..."
+            )
+        
+        if not response.dmarc_recommendation:
+            response.dmarc_recommendation = DnsRecommendation(
+                record_type="DMARC",
+                issues=["No DMARC record found", "Email security and reporting is incomplete"],
+                recommendations=["Add a DMARC record to protect your domain from email spoofing"],
+                recommended_value=f"v=DMARC1; p=quarantine; rua=mailto:dmarc@{domain.domain_name}; pct=100"
+            )
+        
+        return response
+    
+    except Exception as e:
+        logger.exception(f"Error getting recommendations for domain ID {domain_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error getting recommendations: {str(e)}")
 
 @router.post("/verify", response_model=DomainVerificationResponse)
 async def verify_domain(

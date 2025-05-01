@@ -45,7 +45,7 @@ app.add_middleware(
     allow_origins=[
        "https://inboxguard.app",
        "https://staging.inboxguard.app",
-    ]
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

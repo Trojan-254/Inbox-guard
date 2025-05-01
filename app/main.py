@@ -88,6 +88,18 @@ async def root():
     """Root endpoint redirects to API documentation"""
     return {"message": f"Welcome to {settings.PROJECT_NAME}. See /api/v1/docs for API documentation."}
 
+@app.get("/debug/routes")
+async def debug_routes():
+    """Debug endpoint to list all registered routes"""
+    routes = []
+    for route in app.routes:
+        routes.append({
+            "path": route.path,
+            "name": route.name,
+            "methods": [m for m in route.methods] if route.methods else None
+        })
+    return {"routes": routes}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=settings.DEBUG)

@@ -47,3 +47,8 @@ htmlcov/
 # OS specific
 .DS_Store
 Thumbs.db
+
+
+# alembic
+alembic/
+alembic.ini

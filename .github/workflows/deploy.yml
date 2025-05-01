@@ -17,5 +17,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /home/simiyu/backend
+            git pull origin main
             pm2 restart all
             pm2 save
+            pm2 status  

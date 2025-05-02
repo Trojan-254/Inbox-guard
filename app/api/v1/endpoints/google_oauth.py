@@ -48,10 +48,11 @@ async def login(request: Request):
     print(f"Google Redirect URI: {REDIRECT_URI}")  # Log the HTTPS version
     
     # Force HTTPS in the calculated redirect URI
-    redirect_uri = request.url_for("google_auth")
+    redirect_uri = settings.GOOGLE_REDIRECT_URI
     if REDIRECT_URI.startswith('http://'):
         REDIRECT_URI = REDIRECT_URI.replace('http://', 'https://')
     
+    print(f"Redirect URI: {REDIRECT_URI}")
     print(f"Calculated redirect URI: {redirect_uri}")
     return await google.authorize_redirect(request, redirect_uri)
 

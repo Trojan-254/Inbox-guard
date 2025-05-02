@@ -26,6 +26,10 @@ config = Config(environ={"GOOGLE_CLIENT_ID": settings.GOOGLE_CLIENT_ID,
                         "GOOGLE_CLIENT_SECRET": settings.GOOGLE_CLIENT_SECRET})
 oauth = OAuth(config)
 
+REDIRECT_URI = settings.GOOGLE_REDIRECT_URI
+if REDIRECT_URI.startswith("http://"):
+    REDIRECT_URI = REDIRECT_URI.replace("http://", "https://")
+
 google = oauth.register(
     name="google",
     server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
@@ -33,7 +37,7 @@ google = oauth.register(
     client_secret=settings.GOOGLE_CLIENT_SECRET,
     client_kwargs={
         "scope": "openid email profile",
-        "redirect_uri": settings.GOOGLE_REDIRECT_URI
+        "redirect_uri": REDIRECT_URI
     }
 )
 
@@ -41,8 +45,13 @@ google = oauth.register(
 async def login(request: Request):
     """Redirect to Google OAuth login"""
     print(f"Google Client ID: {settings.GOOGLE_CLIENT_ID}")
-    print(f"Google Redirect URI: {settings.GOOGLE_REDIRECT_URI}")
+    print(f"Google Redirect URI: {REDIRECT_URI}")  # Log the HTTPS version
+    
+    # Force HTTPS in the calculated redirect URI
     redirect_uri = request.url_for("google_auth")
+    if redirect_uri.startswith('http://'):
+        redirect_uri = redirect_uri.replace('http://', 'https://')
+    
     print(f"Calculated redirect URI: {redirect_uri}")
     return await google.authorize_redirect(request, redirect_uri)
 

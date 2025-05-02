@@ -26,7 +26,7 @@ config = Config(environ={"GOOGLE_CLIENT_ID": settings.GOOGLE_CLIENT_ID,
                         "GOOGLE_CLIENT_SECRET": settings.GOOGLE_CLIENT_SECRET})
 oauth = OAuth(config)
 
-REDIRECT_URI = settings.GOOGLE_REDIRECT_URI
+REDIRECT_URI = "https://inbox-guard.online/api/v1/auth/google/callback"
 if REDIRECT_URI.startswith("http://"):
     REDIRECT_URI = REDIRECT_URI.replace("http://", "https://")
 
@@ -41,18 +41,25 @@ google = oauth.register(
     }
 )
 
+# In your google_oauth.py
+REDIRECT_URI = "https://inbox-guard.online/api/v1/auth/google/callback"  # Hardcoded HTTPS
+
 @router.get("/login")
 async def login(request: Request):
-    """Redirect to Google OAuth login"""
-    print(f"Google Redirect URI: {REDIRECT_URI}")  
+    """Modified login endpoint"""
+    # Verify we're getting the correct host
+    if request.headers.get('host') != "inbox-guard.online":
+        raise HTTPException(400, "Invalid host header")
     
-    redirect_uri = str(request.url_for("google_auth"))
-    if redirect_uri.startswith('http://'):
-        redirect_uri = redirect_uri.replace('http://', 'https://')
+    # Generate secure callback URL
+    callback_url = request.url_for("google_auth")
+    if str(callback_url).startswith('http://'):
+        callback_url = str(callback_url).replace('http://', 'https://')
     
-    print(f"Calculated redirect URI: {redirect_uri}")
-    return await google.authorize_redirect(request, redirect_uri)
+    logger.info(f"OAuth initiated with callback: {callback_url}")
+    return await google.authorize_redirect(request, str(callback_url))
 
+    
 @router.get("/callback")
 async def google_auth(request: Request, db: Session = Depends(get_db)):
     """Handle Google OAuth callback"""

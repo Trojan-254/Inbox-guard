@@ -12,6 +12,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from starlette.middleware.sessions import SessionMiddleware
 from starlette.requests import Request
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 
 from app.api.v1.router import api_router
 from app.core.logging import setup_logging
@@ -52,6 +54,21 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(GZipMiddleware)
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=[
+    "inbox-guard.online",
+    "api.inbox-guard.online",
+    "localhost"
+])
+
+# Add this before include_router
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith("/api/"):
+        response.headers["X-Forwarded-Proto"] = "https"
+    return response
 
 # Session middleware
 app.add_middleware(

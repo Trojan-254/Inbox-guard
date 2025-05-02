@@ -100,6 +100,17 @@ async def debug_routes():
         })
     return {"routes": routes}
 
+@app.get("/debug/request")
+async def debug_request(request: Request):
+    """Debug endpoint to show request information"""
+    return {
+        "path": request.url.path,
+        "base_url": str(request.base_url),
+        "headers": dict(request.headers),
+        "query_params": dict(request.query_params),
+        "client": request.client.host if request.client else None,
+    }
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=settings.DEBUG)

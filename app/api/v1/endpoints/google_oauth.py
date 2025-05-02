@@ -46,7 +46,7 @@ async def login(request: Request):
     """Redirect to Google OAuth login"""
     print(f"Google Redirect URI: {REDIRECT_URI}")  
     
-    redirect_uri = request.url_for("google_auth")
+    redirect_uri = str(request.url_for("google_auth"))
     if redirect_uri.startswith('http://'):
         redirect_uri = redirect_uri.replace('http://', 'https://')
     

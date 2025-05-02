@@ -44,15 +44,12 @@ google = oauth.register(
 @router.get("/login")
 async def login(request: Request):
     """Redirect to Google OAuth login"""
-    print(f"Google Client ID: {settings.GOOGLE_CLIENT_ID}")
-    print(f"Google Redirect URI: {REDIRECT_URI}")  # Log the HTTPS version
+    print(f"Google Redirect URI: {REDIRECT_URI}")  
     
-    # Force HTTPS in the calculated redirect URI
-    redirect_uri = settings.GOOGLE_REDIRECT_URI
-    if REDIRECT_URI.startswith('http://'):
-        REDIRECT_URI = REDIRECT_URI.replace('http://', 'https://')
+    redirect_uri = request.url_for("google_auth")
+    if redirect_uri.startswith('http://'):
+        redirect_uri = redirect_uri.replace('http://', 'https://')
     
-    print(f"Redirect URI: {REDIRECT_URI}")
     print(f"Calculated redirect URI: {redirect_uri}")
     return await google.authorize_redirect(request, redirect_uri)
 

@@ -10,7 +10,9 @@ import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from starlette.middleware.sessions import SessionMiddleware
+from starlette.middleware.trustedhost import TrustHostMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
 
 from app.api.v1.router import api_router
 from app.core.logging import setup_logging
@@ -28,6 +30,13 @@ logger = logging.getLogger("__name__")
 logger.setLevel(logging.INFO)
 logger.info("Starting InboxGuard application...")
 setup_logging()
+
+class ForwardedProtoMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        forwarded_proto = request.headers.get("X-Forwarded-Proto")
+        if forwarded_proto:
+            request.scope["scheme"] = forwarded_proto
+        return await call_next(request)
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -53,12 +62,12 @@ app.add_middleware(
 
 # Session middleware
 app.add_middleware(
-    SessionMiddleware,
-    secret_key=settings.SECRET_KEY,
-    session_cookie="inboxguard_session",
-    max_age=3600
+    TrustedHostMiddleware, 
+    allowed_hosts=["inbox-guard.online", "www.inbox-guard.online"]
 )
 
+# Add middleware to handle X-Forwarded-Proto header
+app.add_middleware(ForwardedProtoMiddleware)
 
 
 # Include API router

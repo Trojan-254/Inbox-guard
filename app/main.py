@@ -10,6 +10,7 @@ import logging
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.middleware.sessions import SessionMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
@@ -62,12 +63,21 @@ app.add_middleware(
 
 # Session middleware
 app.add_middleware(
-    TrustedHostMiddleware, 
+    SessionMiddleware,
+    secret_key=settings.SECRET_KEY,
+    session_cookie="inboxguard_session",
+    max_age=3600
+)
+
+# Trusted host middleware
+app.add_middleware(
+    TrustedHostMiddleware,
     allowed_hosts=["inbox-guard.online", "www.inbox-guard.online"]
 )
 
 # Add middleware to handle X-Forwarded-Proto header
 app.add_middleware(ForwardedProtoMiddleware)
+
 
 
 # Include API router

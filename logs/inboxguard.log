@@ -1605,3 +1605,49 @@ TypeError: create_domain() got an unexpected keyword argument 'original_input'
 2025-05-14 10:53:00 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Analyzing results...
 2025-05-14 10:53:00 - app.worker.tasks - INFO - Completed DNS verification for domain yourdomain.com with job ID a800a9f6-4afa-4e89-8e0a-5922e27f0d55
 2025-05-14 10:59:11 - app.db.database - INFO - Database disconnected successfully
+2025-05-14 11:56:32 - app.db.database - INFO - Database connection successful
+2025-05-14 11:57:02 - app.worker.tasks - INFO - Starting DNS verification for domain inbox-guard.online with job ID 211089b7-6f2c-48c5-9965-9bb2a0c64bf3
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking MX records...
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Detecting email provider...
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking SPF record...
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Attempting to detect DKIM selector...
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: default
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: dkim
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: mail
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: email
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: selector
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: key
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: k1
+2025-05-14 11:57:02 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: domainkey
+2025-05-14 11:57:03 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking DMARC record...
+2025-05-14 11:57:03 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Analyzing results...
+2025-05-14 11:57:03 - app.worker.tasks - INFO - Completed DNS verification for domain inbox-guard.online with job ID 211089b7-6f2c-48c5-9965-9bb2a0c64bf3
+2025-05-14 16:29:46 - app.db.database - INFO - Database disconnected successfully
+2025-05-14 16:29:48 - app.db.database - INFO - Database connection successful
+2025-05-14 16:33:54 - app.db.database - INFO - Database disconnected successfully
+2025-05-14 16:33:56 - app.db.database - INFO - Database connection successful
+2025-05-14 16:35:25 - app.db.database - INFO - Database disconnected successfully
+2025-05-14 16:35:27 - app.db.database - INFO - Database connection successful
+2025-05-14 16:36:14 - app.db.database - INFO - Database disconnected successfully
+2025-05-14 16:36:16 - app.db.database - INFO - Database connection successful
+2025-05-14 16:41:19 - app.db.database - INFO - Database disconnected successfully
+2025-05-14 16:41:21 - app.db.database - INFO - Database connection successful
+2025-05-14 16:42:18 - app.db.database - INFO - Database disconnected successfully
+2025-05-14 16:42:21 - app.db.database - INFO - Database connection successful
+2025-05-14 16:43:56 - app.worker.tasks - INFO - Starting DNS verification for domain x.com with job ID d11a2d70-4ecc-4c6f-8d17-3fd5b8c5f40a
+2025-05-14 16:43:56 - app.services.dns.scanner - INFO - Scan status for x.com: Checking MX records...
+2025-05-14 16:43:57 - app.services.dns.scanner - INFO - Scan status for x.com: Detecting email provider...
+2025-05-14 16:43:57 - app.services.dns.scanner - INFO - Scan status for x.com: Checking SPF record...
+2025-05-14 16:43:57 - app.services.dns.scanner - INFO - Scan status for x.com: Attempting to detect DKIM selector...
+2025-05-14 16:43:57 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: default
+2025-05-14 16:43:57 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: dkim
+2025-05-14 16:43:57 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: mail
+2025-05-14 16:43:57 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: email
+2025-05-14 16:43:57 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: selector
+2025-05-14 16:43:58 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: key
+2025-05-14 16:43:58 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: k1
+2025-05-14 16:43:58 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: domainkey
+2025-05-14 16:43:58 - app.services.dns.scanner - INFO - Scan status for x.com: Checking DMARC record...
+2025-05-14 16:43:58 - app.services.dns.scanner - INFO - Scan status for x.com: Analyzing results...
+2025-05-14 16:43:58 - app.worker.tasks - INFO - Completed DNS verification for domain x.com with job ID d11a2d70-4ecc-4c6f-8d17-3fd5b8c5f40a
+2025-05-14 16:44:57 - app.db.database - INFO - Database disconnected successfully

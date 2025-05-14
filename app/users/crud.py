@@ -131,7 +131,7 @@ async def get_user_domains(db: Session, user_id: int, skip: int = 0, limit: int 
     if not db.query(models.User).filter(models.User.id == user_id).first():
         return []
     # Fetch domains for the user
-    query = db.query(models.Domain).filter(models.Domain.user_id == user_id).offset(skip).limit(limit)
+    query = db.query(models.Domain).filter(models.Domain.user_id == user_id, models.Domain.is_active == True).offset(skip).limit(limit)
     # print(f"Query: {query}")
     domains = query.all()
     # print(f"Domains: {domains}")
@@ -181,7 +181,10 @@ def get_domain_dns_records(db: Session, domain_id: int, limit: int = None):
     return query.all()
 
 def get_domain_by_name(db: Session, domain_name: str, user_id: int = None):
-    query = db.query(models.Domain).filter(models.Domain.domain_name == domain_name)
+    query = db.query(models.Domain).filter(
+        models.Domain.domain_name == domain_name,
+        models.Domain.is_active == True 
+    )
     
     if user_id is not None:
         query = query.filter(models.Domain.user_id == user_id)

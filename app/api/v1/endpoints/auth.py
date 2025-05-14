@@ -10,7 +10,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
@@ -25,7 +25,7 @@ router = APIRouter()
 
 # Security
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 # Models
 class Token(BaseModel):
@@ -54,7 +54,7 @@ class UserResponse(BaseModel):
     last_login: Optional[datetime] = None
 
     class Config:
-        orm_mode = True
+        model_config = ConfigDict(from_attributes=True)
 
 
 def verify_password(plain_password, hashed_password):
@@ -64,18 +64,6 @@ def verify_password(plain_password, hashed_password):
 def get_password_hash(password):
     """Hash a password"""
     return pwd_context.hash(password)
-
-def authenticate_user(db: Session, email: str, password: str):
-    """Authenticate a user"""
-    user = get_user_by_email(db, email)
-    if not user:
-        return False
-    # If user was created with Google and has no password
-    if user.hashed_password is None:
-        return False
-    if not verify_password(password, user.hashed_password):
-        return False
-    return user
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     """Create JWT access token"""
@@ -146,9 +134,7 @@ async def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
     
     # Create user
     try:
-        # Hash password
-        hashed_password = get_password_hash(user_data.password)
-        user = create_user(db, user_data.email, hashed_password, user_data.name)
+        user = create_user(db, user_data.email, user_data.password, user_data.name)
         # Log user registration
         create_audit_log(db, user.id, "user_registered", {"registration_method": "email"})
         return user
@@ -160,13 +146,15 @@ async def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
         )
 
 
-@router.post("/token", response_model=Token)
+@router.post("/login", response_model=Token)
 async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db)
 ):
+    logger.info(f"Login attemp: username={form_data.username}, password={form_data.password}")
     """Login to get access token"""
     user = authenticate_user(db, form_data.username, form_data.password)
+    logger.info(f"User authenticated: {user}")
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

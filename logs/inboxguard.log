@@ -625,3 +625,983 @@ Traceback (most recent call last):
 AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-04-30 12:49:46 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
 2025-04-30 12:50:48 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-05-03 15:18:25 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-03 15:20:17 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-03 15:21:12 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-03 16:38:37 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-05-03 21:09:13 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-03 21:09:24 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-05-03 21:13:11 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-05-03 21:13:57 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-05-03 21:14:07 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-05-03 21:14:11 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-05-03 21:14:16 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-05-03 21:14:24 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.yourdomain.com
+2025-05-03 21:14:34 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-05-03 21:31:10 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-05-04 09:56:42 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-04 09:57:13 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-05-04 10:00:32 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-05-04 10:04:07 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-05-04 10:05:06 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-05-04 11:26:31 - app.api.v1.endpoints.domains - ERROR - Error verifying domain inbox-guard.online: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-04 15:39:15 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-04 15:39:21 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-04 15:52:49 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-04 15:52:50 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-04 15:53:03 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-05 13:20:47 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-05 13:21:01 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-05 13:22:26 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-05 13:22:30 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-05 13:22:45 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-05 13:26:56 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-06 09:43:30 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-06 09:43:45 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-06 09:43:46 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-06 09:43:48 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-06 09:43:52 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 231, in verify_domain
+    verification_result = await verify_domain_dns(
+TypeError: verify_domain_dns() got an unexpected keyword argument 'email_selector'
+2025-05-06 09:52:24 - app.api.v1.endpoints.domains - ERROR - Error verifying domain yourdomain.com: 'DomainVerificationRequest' object has no attribute 'email_selector'
+Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 236, in verify_domain
+    dkim_selector=domain_request.email_selector
+  File "/home/xyz/env/lib/python3.10/site-packages/pydantic/main.py", line 994, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'DomainVerificationRequest' object has no attribute 'email_selector'. Did you mean: 'dkim_selector'?
+2025-05-06 09:54:03 - app.services.dns.lookup - INFO - No TXT records found for _domainkey._domainkey.yourdomain.com
+2025-05-06 09:59:16 - app.services.dns.lookup - INFO - No TXT records found for _domainkey._domainkey.yourdomain.com
+2025-05-06 09:59:26 - app.services.dns.lookup - INFO - No TXT records found for _domainkey._domainkey.yourdomain.com
+2025-05-06 10:01:24 - app.services.dns.lookup - INFO - No TXT records found for _domainkey._domainkey.google.com
+2025-05-06 10:01:28 - app.services.dns.lookup - INFO - No TXT records found for _domainkey._domainkey.google.com
+2025-05-06 10:20:55 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.google.com
+2025-05-06 10:21:02 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.google.com
+2025-05-06 14:40:50 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-06 14:54:07 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-06 14:56:19 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-06 14:57:01 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-07 11:52:27 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-07 11:52:48 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-07 11:53:33 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-07 12:25:41 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-07 12:36:02 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.gmail.com
+2025-05-07 18:05:17 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-07 18:22:03 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-07 18:36:33 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-07 19:48:59 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.gmail.com
+2025-05-07 19:49:42 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-07 19:51:32 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-07 19:52:38 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.gmail.com
+2025-05-07 20:09:05 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-07 20:27:50 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.gmail.com
+2025-05-07 20:28:44 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.gmail.com
+2025-05-07 20:29:08 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.redis.com
+2025-05-07 20:29:21 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.redis.com
+2025-05-08 08:28:00 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-08 08:28:32 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-08 08:47:47 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 09:09:05 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 09:14:14 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 09:14:45 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 09:15:51 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-08 09:31:33 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-08 10:01:29 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:19:36 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-08 10:25:03 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-08 10:33:58 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:33:59 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:34:02 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:34:06 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:35:23 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:35:24 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:35:26 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:35:30 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:44:14 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:44:39 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:44:40 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:44:42 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:44:46 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:44:55 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.yourdomain.com
+2025-05-08 10:46:27 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-08 10:48:04 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.gmail.com
+2025-05-10 11:40:05 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-10 11:46:37 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-10 12:33:57 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-10 12:38:01 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-10 13:05:59 - app.db.database - INFO - Database connection successful
+2025-05-10 13:07:05 - app.db.database - INFO - Database connection successful
+2025-05-10 13:07:09 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:07:11 - app.db.database - INFO - Database connection successful
+2025-05-10 13:07:19 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:09:32 - app.db.database - INFO - Database connection successful
+2025-05-10 13:11:12 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:11:29 - app.db.database - INFO - Database connection successful
+2025-05-10 13:11:33 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:11:39 - app.db.database - INFO - Database connection successful
+2025-05-10 13:12:19 - passlib.handlers.bcrypt - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "/home/xyz/env/lib/python3.10/site-packages/passlib/handlers/bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-05-10 13:15:16 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:15:19 - app.db.database - INFO - Database connection successful
+2025-05-10 13:27:45 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:27:46 - app.db.database - INFO - Database connection successful
+2025-05-10 13:27:59 - app.api.v1.endpoints.auth - INFO - Login attemp: username=axtu@gmail.com, password=Sud#2vkrs
+2025-05-10 13:27:59 - app.api.v1.endpoints.auth - INFO - user fetched from DB: <app.db.models.User object at 0x75bfd7fb2b90>
+2025-05-10 13:29:13 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:29:14 - app.db.database - INFO - Database connection successful
+2025-05-10 13:29:24 - app.api.v1.endpoints.auth - INFO - Login attemp: username=axtu@gmail.com, password=Sud#2vkrs
+2025-05-10 13:29:24 - app.api.v1.endpoints.auth - INFO - user fetched from DB: <app.db.models.User object at 0x71c9da262b90>
+2025-05-10 13:36:22 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:36:24 - app.db.database - INFO - Database connection successful
+2025-05-10 13:36:31 - app.api.v1.endpoints.auth - INFO - Login attemp: username=axtu@gmail.com, password=Sud#2vkrs
+2025-05-10 13:36:31 - app.api.v1.endpoints.auth - INFO - user fetched from DB: <app.db.models.User object at 0x7408e5bd2b90>
+2025-05-10 13:36:31 - app.api.v1.endpoints.auth - INFO - User authenticated: False
+2025-05-10 13:38:08 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:38:10 - app.db.database - INFO - Database connection successful
+2025-05-10 13:38:19 - app.api.v1.endpoints.auth - INFO - Login attemp: username=axtu@gmail.com, password=Sud#2vkrs
+2025-05-10 13:38:19 - app.api.v1.endpoints.auth - INFO - User authenticated: None
+2025-05-10 13:39:21 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:39:23 - app.db.database - INFO - Database connection successful
+2025-05-10 13:39:25 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:39:27 - app.db.database - INFO - Database connection successful
+2025-05-10 13:39:35 - app.api.v1.endpoints.auth - INFO - Login attemp: username=axtu@gmail.com, password=Sud#2vkrs
+2025-05-10 13:40:10 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:40:11 - app.db.database - INFO - Database connection successful
+2025-05-10 13:40:24 - app.api.v1.endpoints.auth - INFO - Login attemp: username=axtu@gmail.com, password=Sud#2vkrs
+2025-05-10 13:40:24 - app.users.crud - INFO - Authenticating user with email: axtu@gmail.com
+2025-05-10 13:40:24 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7309c9fceb90>
+2025-05-10 13:40:24 - app.api.v1.endpoints.auth - INFO - User authenticated: None
+2025-05-10 13:41:58 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:41:59 - app.db.database - INFO - Database connection successful
+2025-05-10 13:42:09 - app.api.v1.endpoints.auth - INFO - Login attemp: username=axtu@gmail.com, password=Sud#2vkrs
+2025-05-10 13:42:09 - app.users.crud - INFO - Authenticating user with email: axtu@gmail.com
+2025-05-10 13:42:09 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x72b98d5cab90>
+2025-05-10 13:42:09 - app.users.crud - INFO - User password: $2b$12$UBLsTm6CIC.Xyec9pmheruXgoGcO2sf5ILLIe35AjTuEwYtrUHr7.
+2025-05-10 13:42:09 - app.users.crud - INFO - user name: ax tu
+2025-05-10 13:42:09 - app.users.crud - INFO - User email: axtu@gmail.com
+2025-05-10 13:42:09 - app.api.v1.endpoints.auth - INFO - User authenticated: None
+2025-05-10 13:48:13 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 13:48:14 - app.db.database - INFO - Database connection successful
+2025-05-10 13:48:19 - app.api.v1.endpoints.auth - INFO - Login attemp: username=axtu@gmail.com, password=Sud#2vkrs
+2025-05-10 13:48:19 - app.users.crud - INFO - Authenticating user with email: axtu@gmail.com
+2025-05-10 13:48:19 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 13:48:20 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7ff3b486ab90>
+2025-05-10 13:48:20 - app.users.crud - INFO - User password: $2b$12$UBLsTm6CIC.Xyec9pmheruXgoGcO2sf5ILLIe35AjTuEwYtrUHr7.
+2025-05-10 13:48:20 - app.users.crud - INFO - user name: ax tu
+2025-05-10 13:48:20 - app.users.crud - INFO - User email: axtu@gmail.com
+2025-05-10 13:48:20 - app.api.v1.endpoints.auth - INFO - User authenticated: None
+2025-05-10 13:52:26 - app.api.v1.endpoints.auth - INFO - Login attemp: username=testuser@gmail.com, password=Sud#2vkrs
+2025-05-10 13:52:26 - app.users.crud - INFO - Authenticating user with email: testuser@gmail.com
+2025-05-10 13:52:26 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 13:52:26 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7ff3b486a260>
+2025-05-10 13:52:26 - app.users.crud - INFO - User password: $2b$12$y1ltnrQLee4FtI2mo7T0yOXa0Cje1Cb/BLhb4k5fpbgVspA0rLP8.
+2025-05-10 13:52:26 - app.users.crud - INFO - user name: test user
+2025-05-10 13:52:26 - app.users.crud - INFO - User email: testuser@gmail.com
+2025-05-10 13:52:26 - app.api.v1.endpoints.auth - INFO - User authenticated: None
+2025-05-10 14:00:24 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:00:27 - app.db.database - INFO - Database connection successful
+2025-05-10 14:00:52 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:00:54 - app.db.database - INFO - Database connection successful
+2025-05-10 14:10:20 - app.api.v1.endpoints.auth - INFO - Login attemp: username=testuser@gmail.com, password=Sud#2vkrs
+2025-05-10 14:10:20 - app.users.crud - INFO - Authenticating user with email: testuser@gmail.com
+2025-05-10 14:10:20 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:10:20 - app.users.crud - INFO - User fetched from DB: None
+2025-05-10 14:10:20 - app.users.crud - INFO - User password: No user found
+2025-05-10 14:10:20 - app.users.crud - INFO - user name: No user found
+2025-05-10 14:10:20 - app.users.crud - INFO - User email: No user found
+2025-05-10 14:10:20 - app.api.v1.endpoints.auth - INFO - User authenticated: None
+2025-05-10 14:10:34 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:10:38 - app.db.database - INFO - Database connection successful
+2025-05-10 14:10:44 - app.api.v1.endpoints.auth - INFO - Login attemp: username=testuser@gmail.com, password=Sud#2vkrs
+2025-05-10 14:10:44 - app.users.crud - INFO - Authenticating user with email: testuser@gmail.com
+2025-05-10 14:10:44 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:10:44 - app.users.crud - INFO - User fetched from DB: None
+2025-05-10 14:10:44 - app.users.crud - INFO - User password: No user found
+2025-05-10 14:10:44 - app.users.crud - INFO - user name: No user found
+2025-05-10 14:10:44 - app.users.crud - INFO - User email: No user found
+2025-05-10 14:10:44 - app.api.v1.endpoints.auth - INFO - User authenticated: None
+2025-05-10 14:11:29 - app.api.v1.endpoints.auth - INFO - Login attemp: username=testuser@gmail.com, password=Sud#2vkrs
+2025-05-10 14:11:29 - app.users.crud - INFO - Authenticating user with email: testuser@gmail.com
+2025-05-10 14:11:29 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:11:29 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7deb242662c0>
+2025-05-10 14:11:29 - app.users.crud - INFO - User password: $2b$12$s0WqTLV3igS4kohxlmg94e34f1L38YdneOc.UhbIgMy/6e1pwpMoy
+2025-05-10 14:11:29 - app.users.crud - INFO - user name: test user
+2025-05-10 14:11:29 - app.users.crud - INFO - User email: testuser@gmail.com
+2025-05-10 14:11:29 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7deb242662c0>
+2025-05-10 14:11:36 - app.api.v1.endpoints.auth - INFO - Login attemp: username=testuser@gmail.com, password=Sud#2vkrs
+2025-05-10 14:11:36 - app.users.crud - INFO - Authenticating user with email: testuser@gmail.com
+2025-05-10 14:11:36 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:11:36 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7deb243b1d50>
+2025-05-10 14:11:36 - app.users.crud - INFO - User password: $2b$12$s0WqTLV3igS4kohxlmg94e34f1L38YdneOc.UhbIgMy/6e1pwpMoy
+2025-05-10 14:11:36 - app.users.crud - INFO - user name: test user
+2025-05-10 14:11:36 - app.users.crud - INFO - User email: testuser@gmail.com
+2025-05-10 14:11:36 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7deb243b1d50>
+2025-05-10 14:12:00 - app.api.v1.endpoints.auth - INFO - Login attemp: username=testuser@gmail.com, password=Sud#2vkrs
+2025-05-10 14:12:00 - app.users.crud - INFO - Authenticating user with email: testuser@gmail.com
+2025-05-10 14:12:00 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:12:00 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7deb2381cdc0>
+2025-05-10 14:12:00 - app.users.crud - INFO - User password: $2b$12$s0WqTLV3igS4kohxlmg94e34f1L38YdneOc.UhbIgMy/6e1pwpMoy
+2025-05-10 14:12:00 - app.users.crud - INFO - user name: test user
+2025-05-10 14:12:00 - app.users.crud - INFO - User email: testuser@gmail.com
+2025-05-10 14:12:01 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7deb2381cdc0>
+2025-05-10 14:16:36 - app.api.v1.endpoints.auth - INFO - Login attemp: username=testuser@gmail.com, password=Sud#2vkrs
+2025-05-10 14:16:36 - app.users.crud - INFO - Authenticating user with email: testuser@gmail.com
+2025-05-10 14:16:36 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:16:36 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7deb2381e290>
+2025-05-10 14:16:36 - app.users.crud - INFO - User password: $2b$12$s0WqTLV3igS4kohxlmg94e34f1L38YdneOc.UhbIgMy/6e1pwpMoy
+2025-05-10 14:16:36 - app.users.crud - INFO - user name: test user
+2025-05-10 14:16:36 - app.users.crud - INFO - User email: testuser@gmail.com
+2025-05-10 14:16:37 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7deb2381e290>
+2025-05-10 14:18:13 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-10 14:18:13 - app.users.crud - INFO - Authenticating user with email: samwuels254@gmail.com
+2025-05-10 14:18:13 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:18:13 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7deb2381f820>
+2025-05-10 14:18:13 - app.users.crud - INFO - User password: $2b$12$1Tb9Oqx/5iEMpA.spgVxx.zaJ8wk.Aoy5fBakC40yXhpWLm2eAXXy
+2025-05-10 14:18:13 - app.users.crud - INFO - user name: Samwuel
+2025-05-10 14:18:13 - app.users.crud - INFO - User email: samwuels254@gmail.com
+2025-05-10 14:18:14 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7deb2381f820>
+2025-05-10 14:18:47 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-10 14:18:47 - app.users.crud - INFO - Authenticating user with email: samwuels254@gmail.com
+2025-05-10 14:18:47 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:18:47 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7deb2381e3e0>
+2025-05-10 14:18:47 - app.users.crud - INFO - User password: $2b$12$1Tb9Oqx/5iEMpA.spgVxx.zaJ8wk.Aoy5fBakC40yXhpWLm2eAXXy
+2025-05-10 14:18:47 - app.users.crud - INFO - user name: Samwuel
+2025-05-10 14:18:47 - app.users.crud - INFO - User email: samwuels254@gmail.com
+2025-05-10 14:18:48 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7deb2381e3e0>
+2025-05-10 14:19:11 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-10 14:19:11 - app.users.crud - INFO - Authenticating user with email: samwuels254@gmail.com
+2025-05-10 14:19:11 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:19:11 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7deb24383910>
+2025-05-10 14:19:11 - app.users.crud - INFO - User password: $2b$12$1Tb9Oqx/5iEMpA.spgVxx.zaJ8wk.Aoy5fBakC40yXhpWLm2eAXXy
+2025-05-10 14:19:11 - app.users.crud - INFO - user name: Samwuel
+2025-05-10 14:19:11 - app.users.crud - INFO - User email: samwuels254@gmail.com
+2025-05-10 14:19:11 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7deb24383910>
+2025-05-10 14:19:33 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-10 14:19:33 - app.users.crud - INFO - Authenticating user with email: samwuels254@gmail.com
+2025-05-10 14:19:33 - app.users.crud - INFO - Authenticating user with password: Sud#2vkrs
+2025-05-10 14:19:33 - app.users.crud - INFO - User fetched from DB: <app.db.models.User object at 0x7deb24264550>
+2025-05-10 14:19:33 - app.users.crud - INFO - User password: $2b$12$1Tb9Oqx/5iEMpA.spgVxx.zaJ8wk.Aoy5fBakC40yXhpWLm2eAXXy
+2025-05-10 14:19:33 - app.users.crud - INFO - user name: Samwuel
+2025-05-10 14:19:33 - app.users.crud - INFO - User email: samwuels254@gmail.com
+2025-05-10 14:19:34 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7deb24264550>
+2025-05-10 14:20:48 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:20:49 - app.db.database - INFO - Database connection successful
+2025-05-10 14:21:06 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:21:08 - app.db.database - INFO - Database connection successful
+2025-05-10 14:32:51 - app.api.v1.endpoints.auth - INFO - Login attemp: username=testuser@gmail.com, password=Sud#2vkrs
+2025-05-10 14:32:52 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7b24a540f1c0>
+2025-05-10 14:36:18 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:36:20 - app.db.database - INFO - Database connection successful
+2025-05-10 14:36:48 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:36:50 - app.db.database - INFO - Database connection successful
+2025-05-10 14:37:16 - app.api.v1.endpoints.domains - INFO - Domain x.com added successfully for user 14
+2025-05-10 14:47:41 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:47:43 - app.db.database - INFO - Database connection successful
+2025-05-10 14:47:47 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:47:53 - app.db.database - INFO - Database connection successful
+2025-05-10 14:50:40 - app.db.database - INFO - Database disconnected successfully
+2025-05-10 14:50:41 - app.db.database - INFO - Database connection successful
+2025-05-11 19:54:42 - app.db.database - INFO - Database disconnected successfully
+2025-05-11 19:54:43 - app.db.database - INFO - Database connection successful
+2025-05-11 20:04:44 - app.db.database - INFO - Database disconnected successfully
+2025-05-11 20:12:07 - app.db.database - INFO - Database connection successful
+2025-05-11 20:43:36 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-11 20:43:37 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-11 20:43:40 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-11 20:43:44 - app.services.dns.lookup - INFO - No TXT records found for default._domainkey.inbox-guard.online
+2025-05-12 14:46:19 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 14:46:20 - app.db.database - INFO - Database connection successful
+2025-05-12 15:07:21 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 15:38:06 - app.db.database - INFO - Database connection successful
+2025-05-12 21:40:56 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 21:40:59 - app.db.database - INFO - Database connection successful
+2025-05-12 21:45:42 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 21:45:44 - app.db.database - INFO - Database connection successful
+2025-05-12 21:47:21 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 21:47:23 - app.db.database - INFO - Database connection successful
+2025-05-12 21:49:21 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 21:49:22 - app.db.database - INFO - Database connection successful
+2025-05-12 21:59:36 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 21:59:57 - app.db.database - INFO - Database connection successful
+2025-05-12 22:04:59 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 22:05:02 - app.db.database - INFO - Database connection successful
+2025-05-12 22:10:58 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-12 22:10:59 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x70f027841480>
+2025-05-12 22:15:02 - app.api.v1.endpoints.domains - ERROR - Error verifying domain: create_or_update_dns_record() missing 1 required positional argument: 'record_value'
+2025-05-12 22:22:00 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 22:22:07 - app.db.database - INFO - Database connection successful
+2025-05-12 22:22:08 - app.api.v1.endpoints.domains - ERROR - Error verifying domain: name 'create_scan_job' is not defined
+2025-05-12 22:51:03 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 22:51:06 - app.db.database - INFO - Database connection successful
+2025-05-12 22:51:07 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 22:51:57 - app.db.database - INFO - Database connection successful
+2025-05-12 22:55:42 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 22:55:44 - app.db.database - INFO - Database connection successful
+2025-05-12 22:57:45 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 22:57:47 - app.db.database - INFO - Database connection successful
+2025-05-12 22:57:52 - app.worker.tasks - INFO - Starting DNS verification for domain google.com with job ID 21f20f23-fd23-474f-9d6f-3141b604d3d4
+2025-05-12 22:57:52 - app.services.dns.scanner - INFO - Scan status for google.com: Checking MX records...
+2025-05-12 22:57:52 - app.services.dns.scanner - INFO - Scan status for google.com: Detecting email provider...
+2025-05-12 22:57:52 - app.services.dns.scanner - INFO - Scan status for google.com: Checking SPF record...
+2025-05-12 22:57:53 - app.services.dns.scanner - INFO - Scan status for google.com: Attempting to detect DKIM selector...
+2025-05-12 22:57:53 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: default
+2025-05-12 22:57:53 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: dkim
+2025-05-12 22:57:54 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: mail
+2025-05-12 22:57:54 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: email
+2025-05-12 22:57:55 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: selector
+2025-05-12 22:57:55 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: key
+2025-05-12 22:57:55 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: k1
+2025-05-12 22:57:56 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: domainkey
+2025-05-12 22:57:56 - app.services.dns.scanner - INFO - Scan status for google.com: Checking DMARC record...
+2025-05-12 22:57:57 - app.services.dns.scanner - INFO - Scan status for google.com: Analyzing results...
+2025-05-12 22:57:57 - app.worker.tasks - ERROR - Error in verification job 21f20f23-fd23-474f-9d6f-3141b604d3d4 for domain google.com: create_or_update_dns_record() got an unexpected keyword argument 'issues'
+2025-05-12 22:59:46 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 22:59:49 - app.db.database - INFO - Database connection successful
+2025-05-12 23:00:01 - app.worker.tasks - INFO - Starting DNS verification for domain google.com with job ID 89fca4c1-fcb6-4197-a393-ef9751bf54e0
+2025-05-12 23:00:01 - app.services.dns.scanner - INFO - Scan status for google.com: Checking MX records...
+2025-05-12 23:00:01 - app.services.dns.scanner - INFO - Scan status for google.com: Detecting email provider...
+2025-05-12 23:00:01 - app.services.dns.scanner - INFO - Scan status for google.com: Checking SPF record...
+2025-05-12 23:00:01 - app.services.dns.scanner - INFO - Scan status for google.com: Attempting to detect DKIM selector...
+2025-05-12 23:00:01 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: default
+2025-05-12 23:00:01 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: dkim
+2025-05-12 23:00:02 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: mail
+2025-05-12 23:00:02 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: email
+2025-05-12 23:00:02 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: selector
+2025-05-12 23:00:03 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: key
+2025-05-12 23:00:03 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: k1
+2025-05-12 23:00:03 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: domainkey
+2025-05-12 23:00:04 - app.services.dns.scanner - INFO - Scan status for google.com: Checking DMARC record...
+2025-05-12 23:00:04 - app.services.dns.scanner - INFO - Scan status for google.com: Analyzing results...
+2025-05-12 23:00:04 - app.worker.tasks - INFO - Completed DNS verification for domain google.com with job ID 89fca4c1-fcb6-4197-a393-ef9751bf54e0
+2025-05-12 23:03:53 - app.worker.tasks - INFO - Starting DNS verification for domain inbox-guard.online with job ID ddf85e08-0ed2-4cbf-a031-4eda8ec0bae1
+2025-05-12 23:03:53 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking MX records...
+2025-05-12 23:03:54 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Detecting email provider...
+2025-05-12 23:03:54 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking SPF record...
+2025-05-12 23:03:54 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Attempting to detect DKIM selector...
+2025-05-12 23:03:54 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: default
+2025-05-12 23:03:54 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: dkim
+2025-05-12 23:03:55 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: mail
+2025-05-12 23:03:55 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: email
+2025-05-12 23:03:55 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: selector
+2025-05-12 23:03:55 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: key
+2025-05-12 23:03:55 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: k1
+2025-05-12 23:03:55 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: domainkey
+2025-05-12 23:03:56 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking DMARC record...
+2025-05-12 23:03:56 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Analyzing results...
+2025-05-12 23:03:56 - app.worker.tasks - INFO - Completed DNS verification for domain inbox-guard.online with job ID ddf85e08-0ed2-4cbf-a031-4eda8ec0bae1
+2025-05-12 23:05:32 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-12 23:05:33 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7d5d31388820>
+2025-05-12 23:06:37 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-12 23:06:38 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7d5d3139cd60>
+2025-05-12 23:08:52 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels003@gmail.com, password=Sud#2vkrs
+2025-05-12 23:08:52 - app.api.v1.endpoints.auth - INFO - User authenticated: None
+2025-05-12 23:09:04 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-12 23:09:04 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x7d5d3138b550>
+2025-05-12 23:10:46 - app.worker.tasks - INFO - Starting DNS verification for domain inbox-guard.online with job ID 246aeb1f-f3e1-46d0-ab70-cca36194e2c2
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking MX records...
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Detecting email provider...
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking SPF record...
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Attempting to detect DKIM selector...
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: default
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: dkim
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: mail
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: email
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: selector
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: key
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: k1
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: domainkey
+2025-05-12 23:10:46 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking DMARC record...
+2025-05-12 23:10:47 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Analyzing results...
+2025-05-12 23:10:47 - app.worker.tasks - INFO - Completed DNS verification for domain inbox-guard.online with job ID 246aeb1f-f3e1-46d0-ab70-cca36194e2c2
+2025-05-12 23:15:36 - app.db.database - INFO - Database disconnected successfully
+2025-05-12 23:15:38 - app.db.database - INFO - Database connection successful
+2025-05-12 23:29:36 - app.db.database - INFO - Database disconnected successfully
+2025-05-13 13:43:07 - app.db.database - INFO - Database connection successful
+2025-05-13 13:44:15 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-13 13:44:15 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x724bcd079540>
+2025-05-13 13:44:56 - app.worker.tasks - INFO - Starting DNS verification for domain inbox-guard.online with job ID 1757aaae-72e2-4d7d-ad51-365ae43d5660
+2025-05-13 13:44:56 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking MX records...
+2025-05-13 13:44:56 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Detecting email provider...
+2025-05-13 13:44:56 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking SPF record...
+2025-05-13 13:44:56 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Attempting to detect DKIM selector...
+2025-05-13 13:44:56 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: default
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: dkim
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: mail
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: email
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: selector
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: key
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: k1
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: domainkey
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking DMARC record...
+2025-05-13 13:44:57 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Analyzing results...
+2025-05-13 13:44:57 - app.worker.tasks - INFO - Completed DNS verification for domain inbox-guard.online with job ID 1757aaae-72e2-4d7d-ad51-365ae43d5660
+2025-05-13 13:45:13 - app.worker.tasks - INFO - Starting DNS verification for domain inbox-guard.online with job ID dd3e563f-999b-4d7a-a22f-ebf72c5751f3
+2025-05-13 13:45:13 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking MX records...
+2025-05-13 13:45:13 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Detecting email provider...
+2025-05-13 13:45:13 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking SPF record...
+2025-05-13 13:45:13 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Attempting to detect DKIM selector...
+2025-05-13 13:45:13 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: default
+2025-05-13 13:45:13 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: dkim
+2025-05-13 13:45:14 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: mail
+2025-05-13 13:45:14 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: email
+2025-05-13 13:45:14 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: selector
+2025-05-13 13:45:14 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: key
+2025-05-13 13:45:14 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: k1
+2025-05-13 13:45:14 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: domainkey
+2025-05-13 13:45:14 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking DMARC record...
+2025-05-13 13:45:14 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Analyzing results...
+2025-05-13 13:45:14 - app.services.dns.scanner - ERROR - Error scanning DKIM record: The DNS response does not contain an answer to the question: google._domainkey.inbox-guard.online. IN TXT
+2025-05-13 13:45:14 - app.worker.tasks - INFO - Completed DNS verification for domain inbox-guard.online with job ID dd3e563f-999b-4d7a-a22f-ebf72c5751f3
+2025-05-13 15:47:02 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-13 15:47:03 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x724bcc7494b0>
+2025-05-13 15:54:43 - app.worker.tasks - INFO - Starting DNS verification for domain google.com with job ID a2dcb8dc-4187-4aa7-a47b-1e2bcbdada13
+2025-05-13 15:54:43 - app.services.dns.scanner - INFO - Scan status for google.com: Checking MX records...
+2025-05-13 15:54:43 - app.services.dns.scanner - INFO - Scan status for google.com: Detecting email provider...
+2025-05-13 15:54:43 - app.services.dns.scanner - INFO - Scan status for google.com: Checking SPF record...
+2025-05-13 15:54:49 - app.services.dns.scanner - INFO - Scan status for google.com: Attempting to detect DKIM selector...
+2025-05-13 15:54:49 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: default
+2025-05-13 15:54:55 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: dkim
+2025-05-13 15:54:55 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: mail
+2025-05-13 15:55:00 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: email
+2025-05-13 15:55:01 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: selector
+2025-05-13 15:55:01 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: key
+2025-05-13 15:55:01 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: k1
+2025-05-13 15:55:02 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: domainkey
+2025-05-13 15:55:02 - app.services.dns.scanner - INFO - Scan status for google.com: Checking DMARC record...
+2025-05-13 15:55:03 - app.services.dns.scanner - INFO - Scan status for google.com: Analyzing results...
+2025-05-13 15:55:03 - app.worker.tasks - INFO - Completed DNS verification for domain google.com with job ID a2dcb8dc-4187-4aa7-a47b-1e2bcbdada13
+2025-05-13 16:00:10 - app.worker.tasks - INFO - Starting DNS verification for domain gmail.com with job ID cc29f061-5d45-486a-b31c-04bc7c2c76b2
+2025-05-13 16:00:10 - app.services.dns.scanner - INFO - Scan status for gmail.com: Checking MX records...
+2025-05-13 16:00:10 - app.services.dns.scanner - INFO - Scan status for gmail.com: Detecting email provider...
+2025-05-13 16:00:10 - app.services.dns.scanner - INFO - Scan status for gmail.com: Checking SPF record...
+2025-05-13 16:00:10 - app.services.dns.scanner - INFO - Scan status for gmail.com: Attempting to detect DKIM selector...
+2025-05-13 16:00:10 - app.services.dns.scanner - INFO - Scan status for gmail.com: Trying DKIM selector: default
+2025-05-13 16:00:11 - app.services.dns.scanner - INFO - Scan status for gmail.com: Trying DKIM selector: dkim
+2025-05-13 16:00:17 - app.services.dns.scanner - INFO - Scan status for gmail.com: Trying DKIM selector: mail
+2025-05-13 16:00:17 - app.services.dns.scanner - INFO - Scan status for gmail.com: Trying DKIM selector: email
+2025-05-13 16:00:17 - app.services.dns.scanner - INFO - Scan status for gmail.com: Trying DKIM selector: selector
+2025-05-13 16:00:18 - app.services.dns.scanner - INFO - Scan status for gmail.com: Trying DKIM selector: key
+2025-05-13 16:00:18 - app.services.dns.scanner - INFO - Scan status for gmail.com: Trying DKIM selector: k1
+2025-05-13 16:00:19 - app.services.dns.scanner - INFO - Scan status for gmail.com: Trying DKIM selector: domainkey
+2025-05-13 16:00:19 - app.services.dns.scanner - INFO - Scan status for gmail.com: Checking DMARC record...
+2025-05-13 16:00:19 - app.services.dns.scanner - INFO - Scan status for gmail.com: Analyzing results...
+2025-05-13 16:00:25 - app.worker.tasks - INFO - Completed DNS verification for domain gmail.com with job ID cc29f061-5d45-486a-b31c-04bc7c2c76b2
+2025-05-13 16:02:30 - app.worker.tasks - INFO - Starting DNS verification for domain inbox-guard.online with job ID 9dd98188-bed5-480d-a3af-ad4c49c6e38f
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking MX records...
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Detecting email provider...
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking SPF record...
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Attempting to detect DKIM selector...
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: default
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: dkim
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: mail
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: email
+2025-05-13 16:02:30 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: selector
+2025-05-13 16:02:31 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: key
+2025-05-13 16:02:31 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: k1
+2025-05-13 16:02:31 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: domainkey
+2025-05-13 16:02:31 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking DMARC record...
+2025-05-13 16:02:31 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Analyzing results...
+2025-05-13 16:02:31 - app.worker.tasks - INFO - Completed DNS verification for domain inbox-guard.online with job ID 9dd98188-bed5-480d-a3af-ad4c49c6e38f
+2025-05-13 16:03:31 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-13 16:03:32 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x724bcc6d6230>
+2025-05-13 16:07:44 - app.api.v1.endpoints.domains - ERROR - Error adding domain: 'type'
+2025-05-13 16:16:33 - app.db.database - INFO - Database disconnected successfully
+2025-05-13 16:16:36 - app.db.database - INFO - Database connection successful
+2025-05-13 16:19:11 - app.db.database - INFO - Database disconnected successfully
+2025-05-13 16:19:13 - app.db.database - INFO - Database connection successful
+2025-05-13 16:19:31 - app.api.v1.endpoints.domains - ERROR - Error adding domain: create_domain() got an unexpected keyword argument 'original_input'
+2025-05-13 16:19:31 - app.api.v1.endpoints.domains - ERROR - Exception detail: Traceback (most recent call last):
+  File "/home/xyz/Inbox-guard/app/api/v1/endpoints/domains.py", line 861, in add_domain
+    domain_db = create_domain(
+TypeError: create_domain() got an unexpected keyword argument 'original_input'
+
+2025-05-13 16:25:06 - app.db.database - INFO - Database disconnected successfully
+2025-05-13 16:25:08 - app.db.database - INFO - Database connection successful
+2025-05-13 16:25:31 - app.db.database - INFO - Database disconnected successfully
+2025-05-13 16:25:33 - app.db.database - INFO - Database connection successful
+2025-05-13 16:27:34 - app.worker.tasks - INFO - Starting DNS verification for domain x.com with job ID 8775e7ee-770a-4a31-b670-31a94ceeb337
+2025-05-13 16:27:34 - app.services.dns.scanner - INFO - Scan status for x.com: Checking MX records...
+2025-05-13 16:27:34 - app.services.dns.scanner - INFO - Scan status for x.com: Detecting email provider...
+2025-05-13 16:27:34 - app.services.dns.scanner - INFO - Scan status for x.com: Checking SPF record...
+2025-05-13 16:27:34 - app.services.dns.scanner - INFO - Scan status for x.com: Attempting to detect DKIM selector...
+2025-05-13 16:27:34 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: default
+2025-05-13 16:27:34 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: dkim
+2025-05-13 16:27:34 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: mail
+2025-05-13 16:27:35 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: email
+2025-05-13 16:27:35 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: selector
+2025-05-13 16:27:35 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: key
+2025-05-13 16:27:40 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: k1
+2025-05-13 16:27:40 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: domainkey
+2025-05-13 16:27:40 - app.services.dns.scanner - INFO - Scan status for x.com: Checking DMARC record...
+2025-05-13 16:27:41 - app.services.dns.scanner - INFO - Scan status for x.com: Analyzing results...
+2025-05-13 16:27:41 - app.worker.tasks - INFO - Completed DNS verification for domain x.com with job ID 8775e7ee-770a-4a31-b670-31a94ceeb337
+2025-05-13 20:34:45 - app.db.database - INFO - Database disconnected successfully
+2025-05-14 07:32:55 - app.db.database - INFO - Database connection successful
+2025-05-14 07:35:44 - app.worker.tasks - INFO - Starting DNS verification for domain quran.com with job ID 0fc8bc6c-d7c1-4e5f-bbd0-27a18ab2006e
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking MX records...
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Detecting email provider...
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking SPF record...
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Attempting to detect DKIM selector...
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: default
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: dkim
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: mail
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: email
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: selector
+2025-05-14 07:35:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: key
+2025-05-14 07:35:45 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: k1
+2025-05-14 07:35:45 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: domainkey
+2025-05-14 07:35:45 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking DMARC record...
+2025-05-14 07:35:45 - app.services.dns.scanner - INFO - Scan status for quran.com: Analyzing results...
+2025-05-14 07:35:45 - app.worker.tasks - INFO - Completed DNS verification for domain quran.com with job ID 0fc8bc6c-d7c1-4e5f-bbd0-27a18ab2006e
+2025-05-14 07:37:24 - app.api.v1.endpoints.auth - INFO - Login attemp: username=samwuels254@gmail.com, password=Sud#2vkrs
+2025-05-14 07:37:24 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x759916b76200>
+2025-05-14 07:43:43 - app.worker.tasks - INFO - Starting DNS verification for domain quran.com with job ID e2c5ef0b-0a82-4573-8eba-9bb5e3be352f
+2025-05-14 07:43:43 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking MX records...
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Detecting email provider...
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking SPF record...
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Attempting to detect DKIM selector...
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: default
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: dkim
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: mail
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: email
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: selector
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: key
+2025-05-14 07:43:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: k1
+2025-05-14 07:43:45 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: domainkey
+2025-05-14 07:43:45 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking DMARC record...
+2025-05-14 07:43:45 - app.services.dns.scanner - INFO - Scan status for quran.com: Analyzing results...
+2025-05-14 07:43:45 - app.worker.tasks - INFO - Completed DNS verification for domain quran.com with job ID e2c5ef0b-0a82-4573-8eba-9bb5e3be352f
+2025-05-14 07:44:52 - app.worker.tasks - INFO - Starting DNS verification for domain example.com with job ID e5119bbb-96f2-4110-ac7d-61ce7b6520bf
+2025-05-14 07:44:52 - app.services.dns.scanner - INFO - Scan status for example.com: Checking MX records...
+2025-05-14 07:44:52 - app.services.dns.scanner - INFO - Scan status for example.com: Detecting email provider...
+2025-05-14 07:44:52 - app.services.dns.scanner - INFO - Scan status for example.com: Checking SPF record...
+2025-05-14 07:44:52 - app.services.dns.scanner - INFO - Scan status for example.com: Attempting to detect DKIM selector...
+2025-05-14 07:44:52 - app.services.dns.scanner - INFO - Scan status for example.com: Trying DKIM selector: default
+2025-05-14 07:44:53 - app.services.dns.scanner - INFO - Scan status for example.com: Checking DKIM record with selector 'default'...
+2025-05-14 07:44:53 - app.services.dns.scanner - INFO - Scan status for example.com: Checking DMARC record...
+2025-05-14 07:44:53 - app.services.dns.scanner - INFO - Scan status for example.com: Analyzing results...
+2025-05-14 07:44:53 - app.worker.tasks - INFO - Completed DNS verification for domain example.com with job ID e5119bbb-96f2-4110-ac7d-61ce7b6520bf
+2025-05-14 08:43:30 - app.worker.tasks - INFO - Starting DNS verification for domain example.com with job ID 737910e3-2e1b-4e66-92af-cfb03bda0af2
+2025-05-14 08:43:30 - app.services.dns.scanner - INFO - Scan status for example.com: Checking MX records...
+2025-05-14 08:43:31 - app.services.dns.scanner - INFO - Scan status for example.com: Detecting email provider...
+2025-05-14 08:43:31 - app.services.dns.scanner - INFO - Scan status for example.com: Checking SPF record...
+2025-05-14 08:43:31 - app.services.dns.scanner - INFO - Scan status for example.com: Attempting to detect DKIM selector...
+2025-05-14 08:43:31 - app.services.dns.scanner - INFO - Scan status for example.com: Trying DKIM selector: default
+2025-05-14 08:43:31 - app.services.dns.scanner - INFO - Scan status for example.com: Checking DKIM record with selector 'default'...
+2025-05-14 08:43:31 - app.services.dns.scanner - INFO - Scan status for example.com: Checking DMARC record...
+2025-05-14 08:43:31 - app.services.dns.scanner - INFO - Scan status for example.com: Analyzing results...
+2025-05-14 08:43:31 - app.worker.tasks - INFO - Completed DNS verification for domain example.com with job ID 737910e3-2e1b-4e66-92af-cfb03bda0af2
+2025-05-14 08:43:32 - app.worker.tasks - INFO - Starting DNS verification for domain quran.com with job ID afb4c491-f523-43a3-9736-45d02bf07451
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking MX records...
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Detecting email provider...
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking SPF record...
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Attempting to detect DKIM selector...
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: default
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: dkim
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: mail
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: email
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: selector
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: key
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: k1
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: domainkey
+2025-05-14 08:43:32 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking DMARC record...
+2025-05-14 08:43:33 - app.services.dns.scanner - INFO - Scan status for quran.com: Analyzing results...
+2025-05-14 08:43:33 - app.worker.tasks - INFO - Completed DNS verification for domain quran.com with job ID afb4c491-f523-43a3-9736-45d02bf07451
+2025-05-14 09:43:35 - app.worker.tasks - INFO - Starting DNS verification for domain example.com with job ID 53c2061b-dd8e-43ea-984a-33d62d4c5f8e
+2025-05-14 09:43:35 - app.services.dns.scanner - INFO - Scan status for example.com: Checking MX records...
+2025-05-14 09:43:35 - app.services.dns.scanner - INFO - Scan status for example.com: Detecting email provider...
+2025-05-14 09:43:35 - app.services.dns.scanner - INFO - Scan status for example.com: Checking SPF record...
+2025-05-14 09:43:35 - app.services.dns.scanner - INFO - Scan status for example.com: Attempting to detect DKIM selector...
+2025-05-14 09:43:35 - app.services.dns.scanner - INFO - Scan status for example.com: Trying DKIM selector: default
+2025-05-14 09:43:36 - app.services.dns.scanner - INFO - Scan status for example.com: Checking DKIM record with selector 'default'...
+2025-05-14 09:43:36 - app.services.dns.scanner - INFO - Scan status for example.com: Checking DMARC record...
+2025-05-14 09:43:36 - app.services.dns.scanner - INFO - Scan status for example.com: Analyzing results...
+2025-05-14 09:43:36 - app.worker.tasks - INFO - Completed DNS verification for domain example.com with job ID 53c2061b-dd8e-43ea-984a-33d62d4c5f8e
+2025-05-14 09:43:37 - app.worker.tasks - INFO - Starting DNS verification for domain quran.com with job ID 448877ba-1c16-4523-b522-9d1c6ada28cd
+2025-05-14 09:43:37 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking MX records...
+2025-05-14 09:43:37 - app.services.dns.scanner - INFO - Scan status for quran.com: Detecting email provider...
+2025-05-14 09:43:37 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking SPF record...
+2025-05-14 09:43:42 - app.services.dns.scanner - INFO - Scan status for quran.com: Attempting to detect DKIM selector...
+2025-05-14 09:43:42 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: default
+2025-05-14 09:43:42 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: dkim
+2025-05-14 09:43:47 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: mail
+2025-05-14 09:43:47 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: email
+2025-05-14 09:43:47 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: selector
+2025-05-14 09:43:47 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: key
+2025-05-14 09:43:48 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: k1
+2025-05-14 09:43:48 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: domainkey
+2025-05-14 09:43:48 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking DMARC record...
+2025-05-14 09:43:48 - app.services.dns.scanner - INFO - Scan status for quran.com: Analyzing results...
+2025-05-14 09:43:48 - app.worker.tasks - INFO - Completed DNS verification for domain quran.com with job ID 448877ba-1c16-4523-b522-9d1c6ada28cd
+2025-05-14 09:44:07 - app.worker.tasks - INFO - Starting DNS verification for domain yourdomain.com with job ID 45976e6e-b0d3-4dd0-807c-0c9628d4c87d
+2025-05-14 09:44:07 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking MX records...
+2025-05-14 09:44:07 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Detecting email provider...
+2025-05-14 09:44:07 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking SPF record...
+2025-05-14 09:44:08 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Attempting to detect DKIM selector...
+2025-05-14 09:44:08 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: default
+2025-05-14 09:44:13 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: dkim
+2025-05-14 09:44:13 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: mail
+2025-05-14 09:44:13 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: email
+2025-05-14 09:44:14 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: selector
+2025-05-14 09:44:14 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: key
+2025-05-14 09:44:15 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: k1
+2025-05-14 09:44:20 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: domainkey
+2025-05-14 09:44:21 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking DMARC record...
+2025-05-14 09:44:21 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Analyzing results...
+2025-05-14 09:44:21 - app.worker.tasks - INFO - Completed DNS verification for domain yourdomain.com with job ID 45976e6e-b0d3-4dd0-807c-0c9628d4c87d
+2025-05-14 09:44:43 - app.worker.tasks - INFO - Starting DNS verification for domain quran.com with job ID 62c58a4c-a680-47ba-aadd-6559a07d50ea
+2025-05-14 09:44:43 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking MX records...
+2025-05-14 09:44:43 - app.services.dns.scanner - INFO - Scan status for quran.com: Detecting email provider...
+2025-05-14 09:44:43 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking SPF record...
+2025-05-14 09:44:43 - app.services.dns.scanner - INFO - Scan status for quran.com: Attempting to detect DKIM selector...
+2025-05-14 09:44:43 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: default
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: dkim
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: mail
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: email
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: selector
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: key
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: k1
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Trying DKIM selector: domainkey
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Checking DMARC record...
+2025-05-14 09:44:44 - app.services.dns.scanner - INFO - Scan status for quran.com: Analyzing results...
+2025-05-14 09:44:44 - app.worker.tasks - INFO - Completed DNS verification for domain quran.com with job ID 62c58a4c-a680-47ba-aadd-6559a07d50ea
+2025-05-14 09:45:36 - app.api.v1.endpoints.auth - INFO - Login attemp: username=jdoe@gmail.com, password=Sud#2vkrs
+2025-05-14 09:45:36 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x759916b91120>
+2025-05-14 09:45:43 - app.api.v1.endpoints.auth - INFO - Login attemp: username=jdoe@gmail.com, password=Sud#2vkrs
+2025-05-14 09:45:43 - app.api.v1.endpoints.auth - INFO - User authenticated: <app.db.models.User object at 0x759916b91ed0>
+2025-05-14 09:46:24 - app.worker.tasks - INFO - Starting DNS verification for domain x.com with job ID ee2d7b29-ce92-4794-8e71-b3c699c011b8
+2025-05-14 09:46:24 - app.services.dns.scanner - INFO - Scan status for x.com: Checking MX records...
+2025-05-14 09:46:24 - app.services.dns.scanner - INFO - Scan status for x.com: Detecting email provider...
+2025-05-14 09:46:24 - app.services.dns.scanner - INFO - Scan status for x.com: Checking SPF record...
+2025-05-14 09:46:24 - app.services.dns.scanner - INFO - Scan status for x.com: Attempting to detect DKIM selector...
+2025-05-14 09:46:24 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: default
+2025-05-14 09:46:24 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: dkim
+2025-05-14 09:46:25 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: mail
+2025-05-14 09:46:25 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: email
+2025-05-14 09:46:25 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: selector
+2025-05-14 09:46:25 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: key
+2025-05-14 09:46:26 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: k1
+2025-05-14 09:46:26 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: domainkey
+2025-05-14 09:46:26 - app.services.dns.scanner - INFO - Scan status for x.com: Checking DMARC record...
+2025-05-14 09:46:26 - app.services.dns.scanner - INFO - Scan status for x.com: Analyzing results...
+2025-05-14 09:46:26 - app.worker.tasks - INFO - Completed DNS verification for domain x.com with job ID ee2d7b29-ce92-4794-8e71-b3c699c011b8
+2025-05-14 09:46:37 - app.worker.tasks - INFO - Starting DNS verification for domain x.com with job ID effa4c7c-ba46-4064-99fb-3224e31e3c74
+2025-05-14 09:46:37 - app.services.dns.scanner - INFO - Scan status for x.com: Checking MX records...
+2025-05-14 09:46:37 - app.services.dns.scanner - INFO - Scan status for x.com: Detecting email provider...
+2025-05-14 09:46:37 - app.services.dns.scanner - INFO - Scan status for x.com: Checking SPF record...
+2025-05-14 09:46:37 - app.services.dns.scanner - INFO - Scan status for x.com: Attempting to detect DKIM selector...
+2025-05-14 09:46:37 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: default
+2025-05-14 09:46:37 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: dkim
+2025-05-14 09:46:38 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: mail
+2025-05-14 09:46:38 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: email
+2025-05-14 09:46:38 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: selector
+2025-05-14 09:46:38 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: key
+2025-05-14 09:46:38 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: k1
+2025-05-14 09:46:38 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: domainkey
+2025-05-14 09:46:38 - app.services.dns.scanner - INFO - Scan status for x.com: Checking DMARC record...
+2025-05-14 09:46:38 - app.services.dns.scanner - INFO - Scan status for x.com: Analyzing results...
+2025-05-14 09:46:39 - app.worker.tasks - INFO - Completed DNS verification for domain x.com with job ID effa4c7c-ba46-4064-99fb-3224e31e3c74
+2025-05-14 09:56:04 - app.worker.tasks - INFO - Starting DNS verification for domain x.com with job ID 6e8823a2-fa85-4744-b0e0-5fda652765c9
+2025-05-14 09:56:04 - app.services.dns.scanner - INFO - Scan status for x.com: Checking MX records...
+2025-05-14 09:56:05 - app.services.dns.scanner - INFO - Scan status for x.com: Detecting email provider...
+2025-05-14 09:56:05 - app.services.dns.scanner - INFO - Scan status for x.com: Checking SPF record...
+2025-05-14 09:56:10 - app.services.dns.scanner - INFO - Scan status for x.com: Attempting to detect DKIM selector...
+2025-05-14 09:56:10 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: default
+2025-05-14 09:56:11 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: dkim
+2025-05-14 09:56:11 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: mail
+2025-05-14 09:56:11 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: email
+2025-05-14 09:56:11 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: selector
+2025-05-14 09:56:11 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: key
+2025-05-14 09:56:12 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: k1
+2025-05-14 09:56:12 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: domainkey
+2025-05-14 09:56:12 - app.services.dns.scanner - INFO - Scan status for x.com: Checking DMARC record...
+2025-05-14 09:56:13 - app.services.dns.scanner - INFO - Scan status for x.com: Analyzing results...
+2025-05-14 09:56:13 - app.worker.tasks - INFO - Completed DNS verification for domain x.com with job ID 6e8823a2-fa85-4744-b0e0-5fda652765c9
+2025-05-14 09:57:18 - app.worker.tasks - INFO - Starting DNS verification for domain x.com with job ID 4ba48268-dc13-4793-afb8-25aeb424db1b
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Checking MX records...
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Detecting email provider...
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Checking SPF record...
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Attempting to detect DKIM selector...
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: default
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: dkim
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: mail
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: email
+2025-05-14 09:57:18 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: selector
+2025-05-14 09:57:19 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: key
+2025-05-14 09:57:19 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: k1
+2025-05-14 09:57:19 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: domainkey
+2025-05-14 09:57:19 - app.services.dns.scanner - INFO - Scan status for x.com: Checking DMARC record...
+2025-05-14 09:57:19 - app.services.dns.scanner - INFO - Scan status for x.com: Analyzing results...
+2025-05-14 09:57:19 - app.worker.tasks - INFO - Completed DNS verification for domain x.com with job ID 4ba48268-dc13-4793-afb8-25aeb424db1b
+2025-05-14 10:12:35 - app.worker.tasks - INFO - Starting DNS verification for domain x.com with job ID f3241498-a7de-40a0-b1e1-a75f776a3d85
+2025-05-14 10:12:35 - app.services.dns.scanner - INFO - Scan status for x.com: Checking MX records...
+2025-05-14 10:12:35 - app.services.dns.scanner - INFO - Scan status for x.com: Detecting email provider...
+2025-05-14 10:12:35 - app.services.dns.scanner - INFO - Scan status for x.com: Checking SPF record...
+2025-05-14 10:12:36 - app.services.dns.scanner - INFO - Scan status for x.com: Attempting to detect DKIM selector...
+2025-05-14 10:12:36 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: default
+2025-05-14 10:12:36 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: dkim
+2025-05-14 10:12:36 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: mail
+2025-05-14 10:12:36 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: email
+2025-05-14 10:12:36 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: selector
+2025-05-14 10:12:37 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: key
+2025-05-14 10:12:37 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: k1
+2025-05-14 10:12:37 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: domainkey
+2025-05-14 10:12:37 - app.services.dns.scanner - INFO - Scan status for x.com: Checking DMARC record...
+2025-05-14 10:12:37 - app.services.dns.scanner - INFO - Scan status for x.com: Analyzing results...
+2025-05-14 10:12:37 - app.worker.tasks - INFO - Completed DNS verification for domain x.com with job ID f3241498-a7de-40a0-b1e1-a75f776a3d85
+2025-05-14 10:47:17 - app.worker.tasks - INFO - Starting DNS verification for domain x.com with job ID db2ce874-fb45-40e1-8d91-abacce59d17d
+2025-05-14 10:47:17 - app.services.dns.scanner - INFO - Scan status for x.com: Checking MX records...
+2025-05-14 10:47:17 - app.services.dns.scanner - INFO - Scan status for x.com: Detecting email provider...
+2025-05-14 10:47:17 - app.services.dns.scanner - INFO - Scan status for x.com: Checking SPF record...
+2025-05-14 10:47:28 - app.services.dns.scanner - ERROR - Error scanning SPF record: The resolution lifetime expired after 10.206 seconds: Server Do53:127.0.0.53@53 answered The DNS operation timed out.; Server Do53:127.0.0.53@53 answered The DNS operation timed out.
+2025-05-14 10:47:28 - app.services.dns.scanner - INFO - Scan status for x.com: Attempting to detect DKIM selector...
+2025-05-14 10:47:28 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: default
+2025-05-14 10:47:28 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: dkim
+2025-05-14 10:47:28 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: mail
+2025-05-14 10:47:28 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: email
+2025-05-14 10:47:28 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: selector
+2025-05-14 10:47:28 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: key
+2025-05-14 10:47:29 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: k1
+2025-05-14 10:47:29 - app.services.dns.scanner - INFO - Scan status for x.com: Trying DKIM selector: domainkey
+2025-05-14 10:47:29 - app.services.dns.scanner - INFO - Scan status for x.com: Checking DMARC record...
+2025-05-14 10:47:29 - app.services.dns.scanner - INFO - Scan status for x.com: Analyzing results...
+2025-05-14 10:47:29 - app.worker.tasks - INFO - Completed DNS verification for domain x.com with job ID db2ce874-fb45-40e1-8d91-abacce59d17d
+2025-05-14 10:47:33 - app.worker.tasks - INFO - Starting DNS verification for domain google.com with job ID 05f8e5d9-1027-40de-80d9-1c86c20f1ad4
+2025-05-14 10:47:33 - app.services.dns.scanner - INFO - Scan status for google.com: Checking MX records...
+2025-05-14 10:47:39 - app.services.dns.scanner - INFO - Scan status for google.com: Detecting email provider...
+2025-05-14 10:47:39 - app.services.dns.scanner - INFO - Scan status for google.com: Checking SPF record...
+2025-05-14 10:47:39 - app.services.dns.scanner - INFO - Scan status for google.com: Attempting to detect DKIM selector...
+2025-05-14 10:47:39 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: default
+2025-05-14 10:47:39 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: dkim
+2025-05-14 10:47:40 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: mail
+2025-05-14 10:47:40 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: email
+2025-05-14 10:47:40 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: selector
+2025-05-14 10:47:41 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: key
+2025-05-14 10:47:46 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: k1
+2025-05-14 10:47:46 - app.services.dns.scanner - INFO - Scan status for google.com: Trying DKIM selector: domainkey
+2025-05-14 10:47:46 - app.services.dns.scanner - INFO - Scan status for google.com: Checking DMARC record...
+2025-05-14 10:47:47 - app.services.dns.scanner - INFO - Scan status for google.com: Analyzing results...
+2025-05-14 10:47:47 - app.worker.tasks - INFO - Completed DNS verification for domain google.com with job ID 05f8e5d9-1027-40de-80d9-1c86c20f1ad4
+2025-05-14 10:47:47 - app.worker.tasks - INFO - Starting DNS verification for domain inbox-guard.online with job ID 411cd1d5-d42d-405e-be16-ad2664b7efe4
+2025-05-14 10:47:47 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking MX records...
+2025-05-14 10:47:47 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Detecting email provider...
+2025-05-14 10:47:47 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking SPF record...
+2025-05-14 10:47:47 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Attempting to detect DKIM selector...
+2025-05-14 10:47:47 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: default
+2025-05-14 10:47:47 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: dkim
+2025-05-14 10:47:47 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: mail
+2025-05-14 10:47:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: email
+2025-05-14 10:47:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: selector
+2025-05-14 10:47:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: key
+2025-05-14 10:47:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: k1
+2025-05-14 10:47:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: domainkey
+2025-05-14 10:47:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking DMARC record...
+2025-05-14 10:47:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Analyzing results...
+2025-05-14 10:47:48 - app.worker.tasks - INFO - Completed DNS verification for domain inbox-guard.online with job ID 411cd1d5-d42d-405e-be16-ad2664b7efe4
+2025-05-14 10:48:48 - app.worker.tasks - INFO - Starting DNS verification for domain inbox-guard.online with job ID ba5dd07d-a56c-42da-8935-9b54c56987f8
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking MX records...
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Detecting email provider...
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking SPF record...
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Attempting to detect DKIM selector...
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: default
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: dkim
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: mail
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: email
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: selector
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: key
+2025-05-14 10:48:48 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: k1
+2025-05-14 10:48:49 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Trying DKIM selector: domainkey
+2025-05-14 10:48:49 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Checking DMARC record...
+2025-05-14 10:48:49 - app.services.dns.scanner - INFO - Scan status for inbox-guard.online: Analyzing results...
+2025-05-14 10:48:49 - app.worker.tasks - INFO - Completed DNS verification for domain inbox-guard.online with job ID ba5dd07d-a56c-42da-8935-9b54c56987f8
+2025-05-14 10:48:55 - app.worker.tasks - INFO - Starting DNS verification for domain yourdomain.com with job ID 34f8304c-15f0-4e72-b4c1-0799c1e89661
+2025-05-14 10:48:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking MX records...
+2025-05-14 10:48:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Detecting email provider...
+2025-05-14 10:48:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking SPF record...
+2025-05-14 10:49:01 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Attempting to detect DKIM selector...
+2025-05-14 10:49:01 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: default
+2025-05-14 10:49:01 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: dkim
+2025-05-14 10:49:01 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: mail
+2025-05-14 10:49:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: email
+2025-05-14 10:49:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: selector
+2025-05-14 10:49:03 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: key
+2025-05-14 10:49:03 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: k1
+2025-05-14 10:49:03 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: domainkey
+2025-05-14 10:49:04 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking DMARC record...
+2025-05-14 10:49:04 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Analyzing results...
+2025-05-14 10:49:04 - app.worker.tasks - INFO - Completed DNS verification for domain yourdomain.com with job ID 34f8304c-15f0-4e72-b4c1-0799c1e89661
+2025-05-14 10:49:55 - app.worker.tasks - INFO - Starting DNS verification for domain yourdomain.com with job ID f885ae9f-c3d0-4ba9-977a-76d645d6e749
+2025-05-14 10:49:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking MX records...
+2025-05-14 10:49:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Detecting email provider...
+2025-05-14 10:49:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking SPF record...
+2025-05-14 10:49:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Attempting to detect DKIM selector...
+2025-05-14 10:49:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: default
+2025-05-14 10:49:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: dkim
+2025-05-14 10:49:55 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: mail
+2025-05-14 10:49:56 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: email
+2025-05-14 10:50:01 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: selector
+2025-05-14 10:50:01 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: key
+2025-05-14 10:50:01 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: k1
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: domainkey
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking DMARC record...
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Analyzing results...
+2025-05-14 10:50:02 - app.worker.tasks - INFO - Completed DNS verification for domain yourdomain.com with job ID f885ae9f-c3d0-4ba9-977a-76d645d6e749
+2025-05-14 10:50:02 - app.worker.tasks - INFO - Starting DNS verification for domain yourdomain.com with job ID af1cf3df-4178-404f-b3fc-6f973f7f5ad5
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking MX records...
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Detecting email provider...
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking SPF record...
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Attempting to detect DKIM selector...
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: default
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: dkim
+2025-05-14 10:50:02 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: mail
+2025-05-14 10:50:03 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: email
+2025-05-14 10:50:03 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: selector
+2025-05-14 10:50:03 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: key
+2025-05-14 10:50:09 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: k1
+2025-05-14 10:50:10 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: domainkey
+2025-05-14 10:50:10 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking DMARC record...
+2025-05-14 10:50:10 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Analyzing results...
+2025-05-14 10:50:10 - app.worker.tasks - INFO - Completed DNS verification for domain yourdomain.com with job ID af1cf3df-4178-404f-b3fc-6f973f7f5ad5
+2025-05-14 10:52:32 - app.worker.tasks - INFO - Starting DNS verification for domain redis.com with job ID 115ba554-a32a-4949-9f09-2c995e3b546e
+2025-05-14 10:52:32 - app.services.dns.scanner - INFO - Scan status for redis.com: Checking MX records...
+2025-05-14 10:52:32 - app.services.dns.scanner - INFO - Scan status for redis.com: Detecting email provider...
+2025-05-14 10:52:32 - app.services.dns.scanner - INFO - Scan status for redis.com: Checking SPF record...
+2025-05-14 10:52:32 - app.services.dns.scanner - INFO - Scan status for redis.com: Attempting to detect DKIM selector...
+2025-05-14 10:52:32 - app.services.dns.scanner - INFO - Scan status for redis.com: Trying DKIM selector: default
+2025-05-14 10:52:32 - app.services.dns.scanner - INFO - Scan status for redis.com: Trying DKIM selector: dkim
+2025-05-14 10:52:33 - app.services.dns.scanner - INFO - Scan status for redis.com: Trying DKIM selector: mail
+2025-05-14 10:52:33 - app.services.dns.scanner - INFO - Scan status for redis.com: Trying DKIM selector: email
+2025-05-14 10:52:33 - app.services.dns.scanner - INFO - Scan status for redis.com: Trying DKIM selector: selector
+2025-05-14 10:52:33 - app.services.dns.scanner - INFO - Scan status for redis.com: Trying DKIM selector: key
+2025-05-14 10:52:33 - app.services.dns.scanner - INFO - Scan status for redis.com: Trying DKIM selector: k1
+2025-05-14 10:52:33 - app.services.dns.scanner - INFO - Scan status for redis.com: Trying DKIM selector: domainkey
+2025-05-14 10:52:33 - app.services.dns.scanner - INFO - Scan status for redis.com: Checking DMARC record...
+2025-05-14 10:52:44 - app.services.dns.scanner - ERROR - Error scanning DMARC record: The resolution lifetime expired after 10.207 seconds: Server Do53:127.0.0.53@53 answered The DNS operation timed out.; Server Do53:127.0.0.53@53 answered The DNS operation timed out.
+2025-05-14 10:52:44 - app.services.dns.scanner - INFO - Scan status for redis.com: Analyzing results...
+2025-05-14 10:52:44 - app.worker.tasks - INFO - Completed DNS verification for domain redis.com with job ID 115ba554-a32a-4949-9f09-2c995e3b546e
+2025-05-14 10:52:54 - app.worker.tasks - INFO - Starting DNS verification for domain yourdomain.com with job ID a800a9f6-4afa-4e89-8e0a-5922e27f0d55
+2025-05-14 10:52:54 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking MX records...
+2025-05-14 10:52:54 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Detecting email provider...
+2025-05-14 10:52:54 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking SPF record...
+2025-05-14 10:52:54 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Attempting to detect DKIM selector...
+2025-05-14 10:52:54 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: default
+2025-05-14 10:52:54 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: dkim
+2025-05-14 10:52:54 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: mail
+2025-05-14 10:52:54 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: email
+2025-05-14 10:52:59 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: selector
+2025-05-14 10:52:59 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: key
+2025-05-14 10:52:59 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: k1
+2025-05-14 10:52:59 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Trying DKIM selector: domainkey
+2025-05-14 10:53:00 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Checking DMARC record...
+2025-05-14 10:53:00 - app.services.dns.scanner - INFO - Scan status for yourdomain.com: Analyzing results...
+2025-05-14 10:53:00 - app.worker.tasks - INFO - Completed DNS verification for domain yourdomain.com with job ID a800a9f6-4afa-4e89-8e0a-5922e27f0d55
+2025-05-14 10:59:11 - app.db.database - INFO - Database disconnected successfully

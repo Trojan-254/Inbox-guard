@@ -1,12 +1,15 @@
+import json
+import logging
 from sqlalchemy.orm import Session
 from datetime import datetime
 from typing import List, Optional
 from passlib.context import CryptContext
 from app.db import models
-from app.db.models import User, Domain, DNSRecord, AuditLog, RecordType, RecordStatus
+from app.db.models import User, Domain, DNSRecord, AuditLog, RecordType, RecordStatus, ScanJob, JobStatus
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+logger = logging.getLogger(__name__)
 
 async def create_user_if_not_exists(email: str, name: str):
     # query = "SELECT * FROM users WHERE email = :email"
@@ -79,16 +82,48 @@ def update_user_last_login(db: Session, user_id: int):
     return db_user
 
 # Domain operations
-def create_domain(db: Session, user_id: int, domain_name: str):
-    db_domain = models.Domain(
+def create_domain(
+    db: Session,
+    *,
+    user_id: int,
+    domain_name: str,
+    original_input: Optional[str] = None,
+    input_type: Optional[str] = "domain",
+    email_prefix: Optional[str] = None,
+    notes: Optional[str] = None
+) -> Domain:
+    """
+    Create a new domain for a user with additional metadata
+    
+    Args:
+        db: Database session
+        user_id: User ID to associate with domain
+        domain_name: Domain name (e.g., example.com)
+        original_input: The original input that was parsed to get the domain
+        input_type: Type of input ('domain' or 'email')
+        email_prefix: If input was an email, the prefix part
+        notes: Optional notes about this domain
+        
+    Returns:
+        Domain: The created domain object
+    """
+    domain = Domain(
         user_id=user_id,
         domain_name=domain_name,
-        created_at=datetime.utcnow()
+        original_input=original_input,
+        input_type=input_type,
+        email_prefix=email_prefix,
+        notes=notes,
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
+        is_active=True
     )
-    db.add(db_domain)
+    
+    db.add(domain)
     db.commit()
-    db.refresh(db_domain)
-    return db_domain
+    db.refresh(domain)
+    
+    return domain
 
 async def get_user_domains(db: Session, user_id: int, skip: int = 0, limit: int = 100):
     # print(f"Fetching domains for user_id: {user_id}, skip: {skip}, limit: {limit}")
@@ -181,26 +216,160 @@ def get_user_audit_logs(db: Session, user_id: int, skip: int = 0, limit: int = 1
     ).offset(skip).limit(limit).all()
 
 def create_or_update_dns_record(
-    db: Session, 
-    domain_id: int, 
-    record_type: RecordType, 
-    status: RecordStatus, 
-    record_value: str
-):
-    # Check if the DNS record already exists
-    existing_record = db.query(models.DNSRecord).filter(
-        models.DNSRecord.domain_id == domain_id,
-        models.DNSRecord.type == record_type,
-        models.DNSRecord.record_value == record_value
+    db: Session,
+    *,
+    domain_id: int,
+    record_type: RecordType,
+    status: RecordStatus,
+    record_value: Optional[str] = None,
+    issues: Optional[List[str]] = None,
+    recommendations: Optional[List[str]] = None,
+    selector: Optional[str] = None
+) -> DNSRecord:
+    """Create or update a DNS record with detailed analysis results"""
+    # Query existing record
+    record = db.query(DNSRecord).filter(
+        DNSRecord.domain_id == domain_id,
+        DNSRecord.type == record_type
     ).first()
-
-    if existing_record:
-        # Update the existing record
-        existing_record.status = status
-        existing_record.last_checked = datetime.utcnow()
-        db.commit()
-        db.refresh(existing_record)
-        return existing_record
+    
+    if record:
+        # Update existing record
+        record.status = status
+        record.last_checked = datetime.utcnow()
+        
+        if record_value is not None:
+            record.record_value = record_value
+            
+        if issues is not None:
+            record.issues = issues if isinstance(issues, str) else json.dumps(issues)
+            
+        if recommendations is not None:
+            record.recommendations = recommendations if isinstance(recommendations, str) else json.dumps(recommendations)
+            
+        if selector is not None and record_type == RecordType.DKIM:
+            record.selector = selector
     else:
-        # Create a new DNS record
-        return create_dns_record(db, domain_id, record_type, status, record_value)
+        # Create new record
+        record = DNSRecord(
+            domain_id=domain_id,
+            type=record_type,
+            status=status,
+            record_value=record_value,
+            last_checked=datetime.utcnow(),
+            issues=issues if isinstance(issues, str) else json.dumps(issues) if issues else None,
+            recommendations=recommendations if isinstance(recommendations, str) else json.dumps(recommendations) if recommendations else None,
+            selector=selector if record_type == RecordType.DKIM else None
+        )
+        db.add(record)
+        
+    db.commit()
+    db.refresh(record)
+    return record
+
+def create_scan_job(
+    db: Session,
+    *,
+    job_id: str,
+    domain_id: int,
+    user_id: int,
+    check_spf: bool = True,
+    check_dkim: bool = True,
+    check_dmarc: bool = True,
+    dkim_selector: str = "default",
+    dkim_selectors: Optional[List[str]] = None
+) -> ScanJob:
+    """Create a new scan job and its initial status record"""
+    # Create the scan job
+    job = ScanJob(
+        job_id=job_id,
+        domain_id=domain_id,
+        user_id=user_id,
+        status="pending",
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
+        check_spf=check_spf,
+        check_dkim=check_dkim,
+        check_dmarc=check_dmarc,
+        dkim_selector=dkim_selector,
+        dkim_selectors=json.dumps(dkim_selectors) if dkim_selectors else None
+    )
+    
+    db.add(job)
+    db.commit()
+    db.refresh(job)
+    
+    # Create initial job status
+    job_status = JobStatus(
+        job_id=job_id,
+        user_id=user_id,
+        status="pending",
+        progress=0,
+        message="Job created, waiting for worker",
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow()
+    )
+    
+    db.add(job_status)
+    db.commit()
+    
+    return job
+
+
+def update_job_status(
+    db: Session,
+    *,
+    job_id: str,
+    status: str,
+    progress: int,
+    message: Optional[str] = None,
+    results: Optional[dict] = None
+) -> JobStatus:
+    """Update the status of a scan job"""
+    # Find job status
+    job_status = db.query(JobStatus).filter(JobStatus.job_id == job_id).first()
+    
+    if not job_status:
+        # Create new status if not found
+        job_status = JobStatus(
+            job_id=job_id,
+            status=status,
+            progress=progress,
+            message=message,
+            results=json.dumps(results) if results else None,
+            updated_at=datetime.utcnow()
+        )
+        db.add(job_status)
+    else:
+        # Update existing status
+        job_status.status = status
+        job_status.progress = progress
+        job_status.updated_at = datetime.utcnow()
+        
+        if message:
+            job_status.message = message
+            
+        if results:
+            job_status.results = json.dumps(results)
+    
+    # Also update the scan job status
+    job = db.query(ScanJob).filter(ScanJob.job_id == job_id).first()
+    if job:
+        job.status = status
+        job.updated_at = datetime.utcnow()
+    
+    db.commit()
+    
+    if job_status:
+        db.refresh(job_status)
+    
+    return job_status
+
+
+def get_scan_job(
+    db: Session,
+    *,
+    job_id: str
+) -> Optional[ScanJob]:
+    """Get a scan job by ID"""
+    return db.query(ScanJob).filter(ScanJob.job_id == job_id).first()

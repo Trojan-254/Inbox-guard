@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import List, Optional, Union, Dict, Any
 from pydantic import AnyHttpUrl, validator, PostgresDsn
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 from dotenv import load_dotenv
 
 env_path = Path(__file__).resolve().parent.parent.parent / ".env"
@@ -65,5 +66,6 @@ class Settings(BaseSettings):
         """Pydantic config"""
         case_sensitive = True
         env_file = ".env"
+        model_config = ConfigDict(from_attributes=True)
 
 settings = Settings()

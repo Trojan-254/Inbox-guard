@@ -4,14 +4,11 @@ from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import sessionmaker
 from contextlib import contextmanager
 from app.core.config import settings
-# import os
-# from dotenv import load_dotenv
 
-# # Load environment variables
-# load_dotenv()
+# logging
+import logging
+logger = logging.getLogger(__name__)
 
-# # Get database URL from environment variables
-# DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Create SQLAlchemy engine
 engine = create_engine(str(settings.DATABASE_URL))
@@ -31,14 +28,16 @@ async def connect():
     try:
         with engine.connect() as connection:
             pass
-        print("Database connection successful")
+        # print("Database connection successful")
+        logger.info("Database connection successful")
         return True
     except OperationalError as e:
-        print("Database connection failed:", str(e))
+        # print("Database connection failed:", str(e))
+        logger.error("Database connection failed: %s", str(e))
         raise
 
 
-def disconnect():
+async def disconnect():
     """
     Properly closes all database connections and cleans up resources.
     """
@@ -50,13 +49,16 @@ def disconnect():
         if 'SessionScoped' in globals():
             SessionScoped.remove()
             
-        print("Database disconnected successfully")
+        # print("Database disconnected successfully")
+        logger.info("Database disconnected successfully")
         return True
     except DisconnectionError as e:
-        print("Error disconnecting from database:", str(e))
+        # print("Error disconnecting from database:", str(e))
+        logger.error("Error disconnecting from database: %s", str(e))
         raise
     except Exception as e:
-        print("Unexpected error during disconnection:", str(e))
+        # print("Unexpected error during disconnection:", str(e))
+        logger.error("Unexpected error during disconnection: %s", str(e))
         raise
 
 # Dependency to get DB session

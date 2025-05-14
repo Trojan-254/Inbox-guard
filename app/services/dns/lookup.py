@@ -3,19 +3,23 @@ DNS lookup service for verifying email DNS records
 """
 import logging
 import asyncio
-import time
 import dns.resolver
 import dns.exception
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional, Any
 
 from app.core.config import settings
 from app.core.exceptions import DNSLookupError
-from app.services.dns.spf import analyze_spf_record
-from app.services.dns.dkim import analyze_dkim_record
-from app.services.dns.dmarc import analyze_dmarc_record
+from app.services.dns.spf import SPFAnalyzer
+from app.services.dns.dkim import DKIMAnalyzer
+from app.services.dns.dmarc import DMARCAnalyzer
 
 logger = logging.getLogger(__name__)
+
+# Create analyzer instances
+spf_analyzer = SPFAnalyzer()
+dkim_analyzer = DKIMAnalyzer()
+dmarc_analyzer = DMARCAnalyzer()
 
 # Create a resolver with custom settings
 resolver = dns.resolver.Resolver()
@@ -28,7 +32,7 @@ async def verify_domain_dns(
     check_spf: bool = True,
     check_dkim: bool = True,
     check_dmarc: bool = True,
-    email_selector: str = "_domainkey"
+    dkim_selector: str = "default"
 ) -> Dict[str, Any]:
     """
     Verify SPF, DKIM, and DMARC records for a domain
@@ -38,15 +42,16 @@ async def verify_domain_dns(
         check_spf: Whether to check SPF records
         check_dkim: Whether to check DKIM records
         check_dmarc: Whether to check DMARC records
-        email_selector: DKIM selector to use
+        dkim_selector: DKIM selector to use
         
     Returns:
-        Dict containing verification results
+        Dict containing verification results with enhanced analysis
     """
     result = {
         "domain": domain,
-        "overall_status": "healthy",  # Default status
-        "timestamp": datetime.utcnow().isoformat()
+        "overall_status": "healthy",  # healthy, issues, critical
+        "timestamp": datetime.utcnow().isoformat(),
+        "details": {}
     }
     
     # Create tasks for each record type to check
@@ -56,7 +61,7 @@ async def verify_domain_dns(
         tasks.append(lookup_and_analyze_spf(domain))
     
     if check_dkim:
-        tasks.append(lookup_and_analyze_dkim(domain, email_selector))
+        tasks.append(lookup_and_analyze_dkim(domain, dkim_selector))
     
     if check_dmarc:
         tasks.append(lookup_and_analyze_dmarc(domain))
@@ -80,21 +85,19 @@ async def verify_domain_dns(
         if check_dmarc:
             dmarc_result = results[index]
     
-    # Add results to response
+    # Add results to response with enhanced details
     if check_spf:
         if isinstance(spf_result, Exception):
             logger.error(f"Error analyzing SPF for {domain}: {str(spf_result)}")
-            result["spf_analysis"] = {
-                "record_type": "SPF",
+            result["details"]["spf"] = {
                 "status": "error",
-                "issues": [f"Error analyzing SPF: {str(spf_result)}"],
+                "error": str(spf_result),
                 "recommendations": ["Check DNS configuration or try again later"]
             }
             result["overall_status"] = "issues"
         else:
-            result["spf_analysis"] = spf_result
-            # Update overall status if needed
-            if spf_result["status"] in ["invalid", "missing"]:
+            result["details"]["spf"] = spf_result
+            if spf_result["status"] == "invalid":
                 result["overall_status"] = "critical"
             elif spf_result["status"] == "warning" and result["overall_status"] == "healthy":
                 result["overall_status"] = "issues"
@@ -102,17 +105,15 @@ async def verify_domain_dns(
     if check_dkim:
         if isinstance(dkim_result, Exception):
             logger.error(f"Error analyzing DKIM for {domain}: {str(dkim_result)}")
-            result["dkim_analysis"] = {
-                "record_type": "DKIM",
+            result["details"]["dkim"] = {
                 "status": "error",
-                "issues": [f"Error analyzing DKIM: {str(dkim_result)}"],
+                "error": str(dkim_result),
                 "recommendations": ["Check DNS configuration or try again later"]
             }
             result["overall_status"] = "issues"
         else:
-            result["dkim_analysis"] = dkim_result
-            # Update overall status if needed
-            if dkim_result["status"] in ["invalid", "missing"]:
+            result["details"]["dkim"] = dkim_result
+            if dkim_result["status"] == "invalid":
                 result["overall_status"] = "critical"
             elif dkim_result["status"] == "warning" and result["overall_status"] == "healthy":
                 result["overall_status"] = "issues"
@@ -120,17 +121,15 @@ async def verify_domain_dns(
     if check_dmarc:
         if isinstance(dmarc_result, Exception):
             logger.error(f"Error analyzing DMARC for {domain}: {str(dmarc_result)}")
-            result["dmarc_analysis"] = {
-                "record_type": "DMARC",
+            result["details"]["dmarc"] = {
                 "status": "error",
-                "issues": [f"Error analyzing DMARC: {str(dmarc_result)}"],
+                "error": str(dmarc_result),
                 "recommendations": ["Check DNS configuration or try again later"]
             }
             result["overall_status"] = "issues"
         else:
-            result["dmarc_analysis"] = dmarc_result
-            # Update overall status if needed
-            if dmarc_result["status"] in ["invalid", "missing"]:
+            result["details"]["dmarc"] = dmarc_result
+            if dmarc_result["status"] == "invalid":
                 result["overall_status"] = "critical"
             elif dmarc_result["status"] == "warning" and result["overall_status"] == "healthy":
                 result["overall_status"] = "issues"
@@ -141,8 +140,8 @@ async def verify_domain_dns(
 async def lookup_and_analyze_spf(domain: str) -> Dict[str, Any]:
     """Lookup and analyze SPF record for a domain"""
     try:
-        spf_record = await lookup_txt_record(domain)
-        spf_entries = [record for record in spf_record if record.startswith("v=spf1")]
+        spf_records = await lookup_txt_record(domain)
+        spf_entries = [record for record in spf_records if record.startswith("v=spf1")]
         
         if not spf_entries:
             return {
@@ -153,25 +152,38 @@ async def lookup_and_analyze_spf(domain: str) -> Dict[str, Any]:
                 "recommendations": [
                     "Create an SPF record with your authorized email servers",
                     "Example: v=spf1 include:_spf.google.com ~all"
-                ]
+                ],
+                "mechanisms": {},
+                "lookup_count": 0
             }
         
-        # Use the first SPF record found
-        spf_value = spf_entries[0]
-        return analyze_spf_record(spf_value)
+        analysis_results = [spf_analyzer.analyze(record) for record in spf_entries]
+        
+        if len(analysis_results) > 1:
+            return {
+                "record_type": "SPF",
+                "status": "invalid",
+                "value": spf_entries,
+                "issues": ["Multiple SPF records found (only one allowed)"],
+                "recommendations": ["Remove duplicate SPF records"],
+                "mechanisms": {},
+                "lookup_count": 0
+            }
+        
+        return analysis_results[0]
     
     except Exception as e:
         logger.exception(f"Error looking up SPF record for {domain}: {str(e)}")
         raise DNSLookupError(f"Error looking up SPF record: {str(e)}")
 
 
-async def lookup_and_analyze_dkim(domain: str, selector: str = "_domainkey") -> Dict[str, Any]:
+async def lookup_and_analyze_dkim(domain: str, selector: str = "default") -> Dict[str, Any]:
     """Lookup and analyze DKIM record for a domain"""
     try:
-        dkim_domain = f"{selector}.{domain}"
-        dkim_record = await lookup_txt_record(dkim_domain)
+        dkim_domain = f"{selector}._domainkey.{domain}"
+        dkim_records = await lookup_txt_record(dkim_domain)
         
-        if not dkim_record:
+        if not dkim_records:
             return {
                 "record_type": "DKIM",
                 "status": "missing",
@@ -179,26 +191,38 @@ async def lookup_and_analyze_dkim(domain: str, selector: str = "_domainkey") -> 
                 "issues": [f"No DKIM record found for selector '{selector}'"],
                 "recommendations": [
                     "Configure DKIM for your domain with your email provider",
-                    f"Create a TXT record for {selector}.{domain}"
-                ]
+                    f"Create a TXT record for {selector}._domainkey.{domain}"
+                ],
+                "tags": {},
+                "key_length": None
             }
         
-        # Use the first DKIM record found (there should only be one)
-        dkim_value = dkim_record[0]
-        return analyze_dkim_record(dkim_value, selector)
+        analysis_results = [dkim_analyzer.analyze(record, selector) for record in dkim_records]
+        
+        if len(analysis_results) > 1:
+            return {
+                "record_type": "DKIM",
+                "status": "warning",
+                "value": dkim_records,
+                "issues": ["Multiple DKIM records found for selector"],
+                "recommendations": ["Ensure only one DKIM record exists per selector"],
+                "tags": {},
+                "key_length": None
+            }
+        
+        return analysis_results[0]
     
     except Exception as e:
-        logger.exception(f"Error looking up DKIM record for {domain} with selector {selector}: {str(e)}")
+        logger.exception(f"Error looking up DKIM record for {domain}: {str(e)}")
         raise DNSLookupError(f"Error looking up DKIM record: {str(e)}")
-
 
 async def lookup_and_analyze_dmarc(domain: str) -> Dict[str, Any]:
     """Lookup and analyze DMARC record for a domain"""
     try:
         dmarc_domain = f"_dmarc.{domain}"
-        dmarc_record = await lookup_txt_record(dmarc_domain)
+        dmarc_records = await lookup_txt_record(dmarc_domain)
         
-        if not dmarc_record:
+        if not dmarc_records:
             return {
                 "record_type": "DMARC",
                 "status": "missing",
@@ -207,12 +231,26 @@ async def lookup_and_analyze_dmarc(domain: str) -> Dict[str, Any]:
                 "recommendations": [
                     "Create a DMARC record to protect your domain from spoofing",
                     "Example: v=DMARC1; p=none; rua=mailto:dmarc-reports@example.com"
-                ]
+                ],
+                "tags": {},
+                "policy_strength": 0
             }
         
-        # Use the first DMARC record found (there should only be one)
-        dmarc_value = dmarc_record[0]
-        return analyze_dmarc_record(dmarc_value)
+        # Analyze all DMARC records (though there should only be one)
+        analysis_results = [dmarc_analyzer.analyze(record) for record in dmarc_records]
+        
+        if len(analysis_results) > 1:
+            return {
+                "record_type": "DMARC",
+                "status": "warning",
+                "value": dmarc_records,
+                "issues": ["Multiple DMARC records found"],
+                "recommendations": ["Ensure only one DMARC record exists"],
+                "tags": {},
+                "policy_strength": 0
+            }
+        
+        return analysis_results[0]
     
     except Exception as e:
         logger.exception(f"Error looking up DMARC record for {domain}: {str(e)}")
@@ -262,7 +300,6 @@ async def check_dns_resolver_health() -> bool:
         True if healthy, False otherwise
     """
     try:
-        # Try to lookup a TXT record for google.com (which should always exist)
         test_records = await lookup_txt_record("google.com")
         return len(test_records) > 0
     except Exception as e:

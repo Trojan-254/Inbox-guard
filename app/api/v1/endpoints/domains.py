@@ -88,12 +88,12 @@ class BulkDomainAddResponse(BaseModel):
 
 class DomainDeleteRequest(BaseModel):
     """Request model for deleting a domain"""
-    domain_id: int = Field(..., description="ID of the domain to delete")
+    domain: str
     notes: Optional[str] = Field(None, description="Optional notes about this domain deletion")
 
 class DomainDeleteResponse(BaseModel):
     """Response model for domain deletion"""
-    domain_id: int
+    domain: str
     success: bool
     message: str
 
@@ -1015,12 +1015,13 @@ async def delete_domain(
 ):
     """Delete a domain from monitoring"""
     try:
-        # Validate domain
-        validated_domain = validate_domain(request.domain)
+        # Validate domain name
+        domain_name = request.domain
+        # print("Domain to delete: ", domain_name)
         
-        # Get domain record
-        domain_db = get_domain_by_name(db, domain_name=validated_domain, user_id=current_user.id)
-        
+        # Get domain record by name
+        domain_db = get_domain_by_name(db, domain_name=domain_name, user_id=current_user.id)
+        # print("Domain record: ", domain_db)
         if not domain_db:
             raise HTTPException(status_code=404, detail="Domain not found")
         
@@ -1031,8 +1032,8 @@ async def delete_domain(
             "domain_deleted", 
             {
                 "domain_id": domain_db.id, 
-                "domain_name": validated_domain,
-                "notes": request.notes if request.notes else "No deletion notes provided"
+                "domain_name": domain_name,
+                "notes": request.notes if hasattr(request, 'notes') and request.notes else "No deletion notes provided"
             }
         )
         
@@ -1040,9 +1041,19 @@ async def delete_domain(
         domain_db.is_active = False
         domain_db.deleted_at = datetime.utcnow()
         db.commit()
+
+        # Remove domain from Redis cache
+        redis_client.delete(f"domain_history:{domain_db.id}")
+        redis_client.delete(f"job_status:{domain_db.id}")
+        redis_client.delete(f"job_results:{domain_db.id}")
+        redis_client.delete(f"domain:{domain_db.id}")
+        redis_client.delete(f"domain:{domain_name}")
         
+        # check if domain is in database
+        domain_db = get_domain_by_name(db, domain_name=domain_name, user_id=current_user.id)
+        # print("Domain record after deletion: ", domain_db)        
         return DomainDeleteResponse(
-            domain=validated_domain,
+            domain=domain_name,
             success=True,
             message="Domain removed from monitoring"
         )

@@ -52,3 +52,5 @@ Thumbs.db
 # alembic
 alembic/
 alembic.ini
+__pycache__/
+logs/

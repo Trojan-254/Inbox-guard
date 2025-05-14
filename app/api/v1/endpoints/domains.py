@@ -235,7 +235,7 @@ async def verify_domain(
             check_dmarc=domain_request.check_dmarc,
             email_selector=domain_request.email_selector
         )
-        
+        print("Verification result: ", verification_result)
         # Update domain last checked timestamp
         update_domain_last_checked(db, domain_db.id)
         

@@ -236,6 +236,8 @@ async def lookup_txt_record(domain: str) -> List[str]:
             None,
             lambda: resolver.resolve(domain, 'TXT')
         )
+
+        print("TXT record captured", txt_records)
         
         # Extract the strings from the TXT records
         return [txt_record.to_text().strip('"') for txt_record in txt_records]

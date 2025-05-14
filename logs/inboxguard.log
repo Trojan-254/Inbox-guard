@@ -625,3 +625,154 @@ Traceback (most recent call last):
 AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-04-30 12:49:46 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
 2025-04-30 12:50:48 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-05-02 21:03:48 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-02 21:15:06 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-02 21:15:25 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-03 07:27:37 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-03 07:29:50 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-03 07:37:55 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-03 07:37:56 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (0/20) now.
+2025-05-03 07:37:56 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (1/20) in 1.00 second.
+2025-05-03 07:37:57 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (2/20) in 1.00 second.
+2025-05-03 07:37:58 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (3/20) in 1.00 second.
+2025-05-03 07:37:59 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (4/20) in 1.00 second.
+2025-05-03 07:38:00 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (5/20) in 1.00 second.
+2025-05-03 07:38:01 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-03 07:38:01 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (6/20) in 1.00 second.
+2025-05-03 07:38:01 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (0/20) now.
+2025-05-03 07:38:01 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (1/20) in 1.00 second.
+2025-05-03 07:38:02 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (7/20) in 1.00 second.
+2025-05-03 07:38:02 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (2/20) in 1.00 second.
+2025-05-03 07:38:03 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (8/20) in 1.00 second.
+2025-05-03 07:38:03 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (3/20) in 1.00 second.
+2025-05-03 07:38:04 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (9/20) in 1.00 second.
+2025-05-03 07:38:04 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (4/20) in 1.00 second.
+2025-05-03 07:38:05 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (10/20) in 1.00 second.
+2025-05-03 07:38:05 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (5/20) in 1.00 second.
+2025-05-03 07:38:06 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (11/20) in 1.00 second.
+2025-05-03 07:38:06 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (6/20) in 1.00 second.
+2025-05-03 07:38:07 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (12/20) in 1.00 second.
+2025-05-03 07:38:07 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (7/20) in 1.00 second.
+2025-05-03 07:38:08 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (13/20) in 1.00 second.
+2025-05-03 07:38:08 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (8/20) in 1.00 second.
+2025-05-03 07:38:09 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (14/20) in 1.00 second.
+2025-05-03 07:38:09 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (9/20) in 1.00 second.
+2025-05-03 07:38:10 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (15/20) in 1.00 second.
+2025-05-03 07:38:10 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (10/20) in 1.00 second.
+2025-05-03 07:38:11 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (16/20) in 1.00 second.
+2025-05-03 07:38:11 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (11/20) in 1.00 second.
+2025-05-03 07:38:12 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (17/20) in 1.00 second.
+2025-05-03 07:38:12 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (12/20) in 1.00 second.
+2025-05-03 07:38:13 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (18/20) in 1.00 second.
+2025-05-03 07:38:13 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (13/20) in 1.00 second.
+2025-05-03 07:38:14 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (19/20) in 1.00 second.
+2025-05-03 07:38:14 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (14/20) in 1.00 second.
+2025-05-03 07:38:15 - celery.backends.redis - CRITICAL - 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2025-05-03 07:38:15 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (15/20) in 1.00 second.
+2025-05-03 07:38:16 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (16/20) in 1.00 second.
+2025-05-03 07:38:17 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (17/20) in 1.00 second.
+2025-05-03 07:38:18 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (18/20) in 1.00 second.
+2025-05-03 07:38:19 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (19/20) in 1.00 second.
+2025-05-03 07:38:20 - celery.backends.redis - CRITICAL - 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2025-05-03 07:39:04 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-03 07:44:05 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-03 07:44:05 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (0/20) now.
+2025-05-03 07:44:05 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (1/20) in 1.00 second.
+2025-05-03 07:44:06 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (2/20) in 1.00 second.
+2025-05-03 07:44:07 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (3/20) in 1.00 second.
+2025-05-03 07:44:08 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (4/20) in 1.00 second.
+2025-05-03 07:44:09 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (5/20) in 1.00 second.
+2025-05-03 07:44:10 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (6/20) in 1.00 second.
+2025-05-03 07:44:11 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (7/20) in 1.00 second.
+2025-05-03 07:44:12 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (8/20) in 1.00 second.
+2025-05-03 07:44:13 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (9/20) in 1.00 second.
+2025-05-03 07:44:14 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (10/20) in 1.00 second.
+2025-05-03 07:44:15 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (11/20) in 1.00 second.
+2025-05-03 07:44:16 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (12/20) in 1.00 second.
+2025-05-03 07:44:17 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (13/20) in 1.00 second.
+2025-05-03 07:44:18 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (14/20) in 1.00 second.
+2025-05-03 07:44:19 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (15/20) in 1.00 second.
+2025-05-03 07:44:20 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (16/20) in 1.00 second.
+2025-05-03 07:44:21 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (17/20) in 1.00 second.
+2025-05-03 07:44:22 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (18/20) in 1.00 second.
+2025-05-03 07:44:23 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (19/20) in 1.00 second.
+2025-05-03 07:44:24 - celery.backends.redis - CRITICAL - 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2025-05-03 07:45:35 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-03 07:45:36 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (0/20) now.
+2025-05-03 07:45:36 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (1/20) in 1.00 second.
+2025-05-03 07:45:37 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (2/20) in 1.00 second.
+2025-05-03 07:45:38 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (3/20) in 1.00 second.
+2025-05-03 07:45:39 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (4/20) in 1.00 second.
+2025-05-03 07:45:40 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (5/20) in 1.00 second.
+2025-05-03 07:45:41 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (6/20) in 1.00 second.
+2025-05-03 07:45:42 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (7/20) in 1.00 second.
+2025-05-03 07:45:43 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (8/20) in 1.00 second.
+2025-05-03 07:45:44 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (9/20) in 1.00 second.
+2025-05-03 07:45:45 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (10/20) in 1.00 second.
+2025-05-03 07:45:46 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (11/20) in 1.00 second.
+2025-05-03 07:45:47 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (12/20) in 1.00 second.
+2025-05-03 07:45:48 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (13/20) in 1.00 second.
+2025-05-03 07:45:49 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (14/20) in 1.00 second.
+2025-05-03 07:45:50 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (15/20) in 1.00 second.
+2025-05-03 07:45:51 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (16/20) in 1.00 second.
+2025-05-03 07:45:52 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (17/20) in 1.00 second.
+2025-05-03 07:45:53 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (18/20) in 1.00 second.
+2025-05-03 07:45:54 - celery.backends.redis - ERROR - Connection to Redis lost: Retry (19/20) in 1.00 second.
+2025-05-03 07:45:55 - celery.backends.redis - CRITICAL - 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2025-05-03 07:56:56 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-03 07:58:48 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-03 07:59:07 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-03 08:44:42 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-03 12:15:26 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-03 14:19:40 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-04 07:23:42 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-04 07:24:21 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-04 07:25:31 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-04 08:06:52 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-04 08:28:42 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-04 08:30:06 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-04 08:31:41 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-04 12:39:34 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-04 12:40:37 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-05 08:32:44 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-06 07:27:40 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-06 07:28:18 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-05-06 07:28:25 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.redis.com
+2025-05-06 07:28:34 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-06 17:46:56 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-06 17:50:20 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-05-06 17:50:27 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-05-06 17:50:57 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.google.com
+2025-05-06 17:52:25 - app.api.v1.endpoints.google_oauth - ERROR - Google authentication error: mismatching_state: CSRF Warning! State not equal in request and response.
+Traceback (most recent call last):
+  File "/home/simiyu/backend/app/api/v1/endpoints/google_oauth.py", line 67, in google_auth
+    token = await google.authorize_access_token(request)
+  File "/home/simiyu/backend/venv/lib/python3.10/site-packages/authlib/integrations/starlette_client/apps.py", line 83, in authorize_access_token
+    params = self._format_state_params(state_data, params)
+  File "/home/simiyu/backend/venv/lib/python3.10/site-packages/authlib/integrations/base_client/sync_app.py", line 260, in _format_state_params
+    raise MismatchingStateError()
+authlib.integrations.base_client.errors.MismatchingStateError: mismatching_state: CSRF Warning! State not equal in request and response.
+2025-05-06 17:52:43 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-07 07:58:47 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-05-07 07:58:53 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-05-07 08:38:36 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.example.com
+2025-05-07 15:54:47 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.inbox-guard.online
+2025-05-07 16:24:15 - app.services.dns.lookup - INFO - No TXT records found for _domainkey.x.com
+2025-05-10 08:26:22 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-10 08:26:33 - app.api.v1.endpoints.google_oauth - ERROR - Google authentication error: access_denied: 
+Traceback (most recent call last):
+  File "/home/simiyu/backend/app/api/v1/endpoints/google_oauth.py", line 67, in google_auth
+    token = await google.authorize_access_token(request)
+  File "/home/simiyu/backend/venv/lib/python3.10/site-packages/authlib/integrations/starlette_client/apps.py", line 69, in authorize_access_token
+    raise OAuthError(error=error, description=description)
+authlib.integrations.base_client.errors.OAuthError: access_denied: 
+2025-05-14 07:58:25 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback
+2025-05-14 08:05:45 - app.api.v1.endpoints.google_oauth - INFO - OAuth initiated with callback: https://inbox-guard.online/api/v1/auth/google/callback

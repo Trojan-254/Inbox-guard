@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 # Create Celery application
 celery_app = Celery(
     "inboxguard",
+    'tasks',
     broker=settings.CELERY_BROKER_URL,
     backend=settings.CELERY_RESULT_BACKEND
 )

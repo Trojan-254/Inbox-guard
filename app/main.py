@@ -49,6 +49,7 @@ app.add_middleware(
     allow_origins=[
        "https://inboxguard.app",
        "https://staging.inboxguard.app",
+       "http://localhost:8080",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -59,7 +60,8 @@ app.add_middleware(GZipMiddleware)
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=[
     "inbox-guard.online",
     "api.inbox-guard.online",
-    "localhost"
+    "localhost",
+    "http://localhost:8080"
 ])
 
 # Add this before include_router

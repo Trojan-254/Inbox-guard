@@ -2,10 +2,15 @@ import dns.resolver
 import dns.exception
 import logging
 import re
+import os
 from typing import List, Dict, Optional, Tuple, Set
 from enum import Enum
 
 logger = logging.getLogger(__name__)
+
+# Dns resolver settings
+DNS_RESOLVER_TIMEOUT = float(os.getenv("DNS_RESOLVER_TIMEOUT", '5'))
+DNS_RESOLVER_LIFETIME = float(os.getenv("DNS_RESOLVER_LIFETIME", '30'))
 
 class DomainScanner:
     """DNS scanner for email deliverability checks"""
@@ -44,15 +49,20 @@ class DomainScanner:
     def __init__(self, domain: str):
         self.domain = domain
         self.resolver = dns.resolver.Resolver()
-        self.resolver.timeout = 5.0
-        self.resolver.lifetime = 10.0
+        self.resolver.timeout = DNS_RESOLVER_TIMEOUT
+        self.resolver.lifetime = DNS_RESOLVER_LIFETIME
         self.email_provider = None
         self.detected_dkim_selector = None
+
+        logger.info(f"DNS resolver configured with timeout={self.resolver.timeout}s, lifetime={self.resolver.lifetime}s")
         
-    async def scan_all(self) -> Dict:
+    async def scan_all(self, provided_dkim_selector: Optional[str] = None) -> Dict:
         """
         Perform a complete scan of the domain
         Returns all scan results
+        
+        Args:
+            provided_dkim_selector: If provided, use this selector instead of auto-detecting
         """
         # Update task status with each step
         results = {}
@@ -80,22 +90,31 @@ class DomainScanner:
                     self.email_provider = provider
                     results["email_provider"] = provider
             
-            # Step 4: Auto-detect DKIM selector
-            self.update_status("Attempting to detect DKIM selector...")
-            dkim_selector = await self.detect_dkim_selector()
-            results["dkim_selector"] = dkim_selector
-            self.detected_dkim_selector = dkim_selector
+            # Step 4: DKIM handling
+            dkim_selector = provided_dkim_selector  # Use provided selector if available
             
-            # Step 5: Check DKIM record with detected selector
             if dkim_selector:
-                self.update_status(f"Checking DKIM record with selector '{dkim_selector}'...")
+                # Use the provided selector directly
+                self.update_status(f"Checking DKIM record with provided selector '{dkim_selector}'...")
                 dkim_result = await self.scan_dkim(dkim_selector)
                 results["dkim"] = dkim_result
+                results["dkim_selector"] = dkim_selector
             else:
-                results["dkim"] = {
-                    "status": "unknown",
-                    "issues": ["No DKIM selector could be automatically detected"]
-                }
+                # Auto-detect if no selector provided
+                self.update_status("Attempting to detect DKIM selector...")
+                dkim_selector = await self.detect_dkim_selector()
+                results["dkim_selector"] = dkim_selector
+                self.detected_dkim_selector = dkim_selector
+                
+                if dkim_selector:
+                    self.update_status(f"Checking DKIM record with detected selector '{dkim_selector}'...")
+                    dkim_result = await self.scan_dkim(dkim_selector)
+                    results["dkim"] = dkim_result
+                else:
+                    results["dkim"] = {
+                        "status": "unknown",
+                        "issues": ["No DKIM selector could be automatically detected"]
+                    }
             
             # Step 6: Check DMARC record
             self.update_status("Checking DMARC record...")
@@ -112,7 +131,7 @@ class DomainScanner:
         except Exception as e:
             logger.error(f"Error during domain scan: {str(e)}")
             return {"error": str(e), "status": "failed"}
-    
+        
     def update_status(self, message: str):
         """Update scan status - this will be used by the task queue"""
         logger.info(f"Scan status for {self.domain}: {message}")
@@ -170,29 +189,40 @@ class DomainScanner:
     async def scan_spf(self) -> Dict:
         """Scan SPF record for the domain"""
         try:
-            answers = self.resolver.resolve(self.domain, 'TXT')
-            
-            for rdata in answers:
-                txt_string = "".join(s.decode() for s in rdata.strings)
-                if txt_string.startswith('v=spf1'):
-                    # Analyze SPF record for issues
-                    issues = self.analyze_spf(txt_string)
-                    
-                    return {
-                        "status": "error" if issues else "valid",
-                        "value": txt_string,
-                        "issues": issues
-                    }
-            
-            return {
-                "status": "missing",
-                "issues": ["No SPF record found"]
-            }
+            try:
+                answers = await self.resolve_with_retry(self.domain, 'TXT')
+                
+                for rdata in answers:
+                    txt_string = "".join(s.decode() for s in rdata.strings)
+                    if txt_string.startswith('v=spf1'):
+                        # Analyze SPF record for issues
+                        issues = self.analyze_spf(txt_string)
+                        
+                        return {
+                            "status": "error" if issues else "valid",
+                            "value": txt_string,
+                            "issues": issues,
+                            "recommendations": self.get_spf_recommendations(issues) if issues else []
+                        }
+                
+                return {
+                    "status": "missing",
+                    "issues": ["No SPF record found"],
+                    "recommendations": ["Create an SPF record to specify authorized senders for your domain"]
+                }
+            except dns.exception.Timeout:
+                logger.error(f"Timeout while resolving SPF record for {self.domain}")
+                return {
+                    "status": "error",
+                    "issues": [f"DNS timeout while scanning SPF record. The DNS server took too long to respond."],
+                    "recommendations": ["Try again later or check your DNS configuration"]
+                }
         except Exception as e:
             logger.error(f"Error scanning SPF record: {str(e)}")
             return {
                 "status": "error",
-                "issues": [f"Error scanning SPF record: {str(e)}"]
+                "issues": [f"Error scanning SPF record: {str(e)}"],
+                "recommendations": []
             }
     
     def analyze_spf(self, spf_record: str) -> List[str]:
@@ -263,35 +293,49 @@ class DomainScanner:
     
     async def scan_dkim(self, selector: str) -> Dict:
         """Scan DKIM record for a specific selector"""
-        dkim_domain = f"{selector}._domainkey.{self.domain}"
-        
         try:
-            answers = self.resolver.resolve(dkim_domain, 'TXT')
+            # Construct DKIM record name
+            dkim_record_name = f"{selector}._domainkey.{self.domain}"
+            self.update_status(f"Looking up DKIM record: {dkim_record_name}")
             
-            for rdata in answers:
-                txt_string = "".join(s.decode() for s in rdata.strings)
-                if "v=dkim1" in txt_string.lower():
-                    # Analyze DKIM record for issues
-                    issues = self.analyze_dkim(txt_string)
+            try:
+                answers = self.resolver.resolve(dkim_record_name, 'TXT')
+                
+                for rdata in answers:
+                    txt_string = "".join(s.decode() for s in rdata.strings)
                     
-                    return {
-                        "status": "error" if issues else "valid",
-                        "value": txt_string,
-                        "selector": selector,
-                        "issues": issues
-                    }
-            
-            return {
-                "status": "missing",
-                "selector": selector,
-                "issues": [f"No valid DKIM record found for selector '{selector}'"]
-            }
-        except dns.resolver.NXDOMAIN:
-            return {
-                "status": "missing",
-                "selector": selector,
-                "issues": [f"No DKIM record found for selector '{selector}'"]
-            }
+                    # Check if it's a valid DKIM record (should contain v=DKIM1)
+                    if "v=dkim1" in txt_string.lower():
+                        # Found a valid DKIM record
+                        issues = self.analyze_dkim(txt_string)
+                        
+                        return {
+                            "status": "error" if issues else "valid",
+                            "value": txt_string,
+                            "selector": selector,
+                            "issues": issues
+                        }
+                
+                # If we get here, we found records but none were DKIM records
+                return {
+                    "status": "invalid",
+                    "selector": selector,
+                    "issues": ["TXT record found but not a valid DKIM record (missing v=DKIM1)"]
+                }
+                
+            except dns.resolver.NXDOMAIN:
+                return {
+                    "status": "missing",
+                    "selector": selector,
+                    "issues": [f"No DKIM record found with selector '{selector}'"]
+                }
+            except dns.resolver.NoAnswer:
+                return {
+                    "status": "missing",
+                    "selector": selector,
+                    "issues": [f"No TXT records found for DKIM selector '{selector}'"]
+                }
+                
         except Exception as e:
             logger.error(f"Error scanning DKIM record: {str(e)}")
             return {
@@ -424,6 +468,23 @@ class DomainScanner:
             "missing_count": status_counts["missing"],
             "error_count": status_counts["error"]
         }
+
+    async def resolve_with_retry(self, qname, rdtype, max_retries=3):
+        """Resolve DNS with retries"""
+        retries = 0
+        while retries < max_retries:
+            try:
+                return self.resolver.resolve(qname, rdtype)
+            except (dns.resolver.NoAnswer, dns.resolver.NXDOMAIN):
+                # Don't retry for these - they're definitive answers
+                raise
+            except Exception as e:
+                retries += 1
+                logger.warning(f"DNS query attempt {retries} failed: {str(e)}")
+                if retries >= max_retries:
+                    raise
+                # Wait a bit longer between retries
+                await asyncio.sleep(1 * retries)
 
 
 # EmailProvider.GOOGLE_WORKSPACE: [],

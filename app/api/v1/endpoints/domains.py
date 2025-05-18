@@ -5,7 +5,7 @@ and background processing
 import logging
 import uuid
 import json
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 from datetime import datetime
 from fastapi import APIRouter, BackgroundTasks, HTTPException, Query, Path, Depends
 from pydantic import BaseModel, EmailStr, HttpUrl, Field, ValidationError
@@ -147,42 +147,118 @@ class JobStatusResponse(BaseModel):
     message: Optional[str] = None
     results: Optional[DomainVerificationResponse] = None
 
-@router.get("/verify-domain/{domain}", response_model=DomainVerificationResponse)
-async def verify_domain_with_scanner(
-    domain: str,
-    check_spf: bool = True,
-    check_dkim: bool = True,
-    check_dmarc: bool = True,
-    dkim_selector: Optional[str] = None,
-    dkim_selectors: Optional[List[str]] = None
-) -> Dict[str, any]:
-    """Verify domain using the DomainScanner class"""
-    logger.info(f"Verifying domain: {domain}")
-    try:
-        scanner = DomainScanner(domain)
-        logger.info(f"Scanner initialized for domain: {domain}")
-        dkim_selector = None
-        if not dkim_selector and dkim_selector != "default":
-            dkim_selector = dkim_selector
-        
-        scan_results = await scanner.scan_all()
-        logger.info(f"Scan results for domain {domain}: {scan_results}")
-        # Process results
-        results = {
-            "domain": domain,
-            "overall_status": scan_results["overall_status"],
-            "spf_analysis": scan_results.get("spf_analysis"),
-            "dkim_analysis": scan_results.get("dkim_analysis"),
-            "dmarc_analysis": scan_results.get("dmarc_analysis"),
-            "timestamp": datetime.utcnow().isoformat()
-        }
-        # Store results in Redis
-        redis_client.set(f"job_results:{domain}", json.dumps(results), ex=3600)  # Expire after 1 hour
-        return results
-    except Exception as e:
-        logger.error(f"Error verifying domain {domain}: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to verify domain: {str(e)}")
+"""Helper functions"""
+# Add these helper functions before the endpoints
 
+def generate_spf_recommendations(domain: str, result: Dict) -> List[str]:
+    """Generate recommendations for improving SPF records"""
+    recommendations = []
+    status = result.get("status", "unknown")
+    issues = result.get("issues", [])
+    value = result.get("value", "")
+    
+    if status == "missing":
+        recommendations.append(f"Add an SPF record with: v=spf1 include:_spf.{domain} ~all")
+        recommendations.append("This basic SPF record will help protect your domain from being spoofed.")
+        return recommendations
+    
+    if not value:
+        return recommendations
+    
+    # Check for common issues and provide recommendations
+    if "No mechanism found" in str(issues):
+        recommendations.append("Your SPF record should include email sending sources.")
+        recommendations.append(f"Consider adding: v=spf1 include:_spf.{domain} ~all")
+    
+    if "Missing ~all or -all" in str(issues) or "SPF record too permissive" in str(issues):
+        recommendations.append("Your SPF record should end with ~all (soft fail) or -all (hard fail) to properly protect against spoofing.")
+    
+    if "Multiple SPF records" in str(issues):
+        recommendations.append("Consolidate multiple SPF records into a single record to avoid conflicts.")
+    
+    if "SPF record too long" in str(issues) or "lookup limit" in str(issues).lower():
+        recommendations.append("Your SPF record has too many lookups. Simplify by consolidating includes or using a flattening service.")
+    
+    # If no specific recommendations were generated but there are issues
+    if not recommendations and issues:
+        recommendations.append("Review your SPF record for syntax errors and missing mechanisms.")
+        
+    return recommendations
+
+
+def generate_dkim_recommendations(domain: str, result: Dict) -> List[str]:
+    """Generate recommendations for improving DKIM records"""
+    recommendations = []
+    status = result.get("status", "unknown")
+    issues = result.get("issues", [])
+    selector = result.get("selector", "default")
+    
+    if status == "missing":
+        recommendations.append(f"Set up DKIM for your domain using selector '{selector}'.")
+        recommendations.append("Contact your email service provider for specific DKIM setup instructions.")
+        return recommendations
+    
+    # Check for common issues
+    if "Invalid DKIM record format" in str(issues):
+        recommendations.append("Your DKIM record has formatting issues. Verify the syntax with your email provider.")
+    
+    if "Key too short" in str(issues) or "weak key" in str(issues).lower():
+        recommendations.append("Use a stronger encryption key (2048-bit RSA or higher) for better security.")
+    
+    if "Missing required tag" in str(issues):
+        recommendations.append("Ensure your DKIM record includes all required tags (v=DKIM1, k=rsa, p=public-key).")
+    
+    # If no specific recommendations were generated but there are issues
+    if not recommendations and issues:
+        recommendations.append("Review your DKIM record format with your email service provider.")
+        
+    return recommendations
+
+
+def generate_dmarc_recommendations(domain: str, result: Dict) -> List[str]:
+    """Generate recommendations for improving DMARC records"""
+    recommendations = []
+    status = result.get("status", "unknown")
+    issues = result.get("issues", [])
+    value = result.get("value", "")
+    
+    if status == "missing":
+        recommendations.append(f"Add a DMARC record with: v=DMARC1; p=none; rua=mailto:dmarc@{domain}")
+        recommendations.append("Start with monitoring mode (p=none) to gather data before enforcing policies.")
+        return recommendations
+    
+    if not value:
+        return recommendations
+    
+    # Parse existing policy if present
+    policy = "none"
+    if "p=none" in value.lower():
+        policy = "none"
+    elif "p=quarantine" in value.lower():
+        policy = "quarantine"
+    elif "p=reject" in value.lower():
+        policy = "reject"
+    
+    # Check common issues
+    if "Missing reporting" in str(issues) or "rua=" not in value.lower():
+        recommendations.append(f"Add aggregate reporting with: rua=mailto:dmarc@{domain}")
+        recommendations.append("Aggregate reports help you monitor email authentication results.")
+    
+    if policy == "none" and "p=none" in value.lower():
+        recommendations.append("Once you've reviewed reports, consider strengthening your policy from p=none to p=quarantine or p=reject.")
+        recommendations.append("This will better protect your domain from being spoofed.")
+    
+    if "low percentage" in str(issues).lower() and "pct=" in value.lower():
+        recommendations.append("Gradually increase your DMARC percentage (pct=) towards 100% for complete coverage.")
+    
+    if "Missing subdomain policy" in str(issues) or "sp=" not in value.lower():
+        recommendations.append("Add subdomain policy (sp=) to protect your subdomains from spoofing.")
+    
+    # If no specific recommendations were generated but there are issues
+    if not recommendations and issues:
+        recommendations.append("Review your DMARC policy and gradually strengthen it as your email authentication matures.")
+        
+    return recommendations
 
 @router.post("/scan-job", response_model=ScanJobResponse)
 async def create_domain_scan_job(
@@ -273,6 +349,7 @@ async def get_job_status(
 ):
     """Get the status of a scan job"""
     try:
+        print("Job status endpint hit")
         # First, try to get status from Redis cache for fast response
         cached_status = redis_client.get(f"job_status:{job_id}")
         
@@ -785,7 +862,7 @@ async def get_domain_history(
         raise HTTPException(status_code=500, detail=f"Failed to get domain history: {str(e)}")
 
 
-@router.get("/domains", response_model=List[Dict])
+@router.get("/", response_model=List[Dict])
 async def get_user_domains(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
@@ -1063,3 +1140,232 @@ async def delete_domain(
     except Exception as e:
         logger.error(f"Error deleting domain: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to delete domain: {str(e)}")
+
+
+@router.get("/anonymous-scan/{domain}", response_model=DomainVerificationResponse)
+async def anonymous_domain_scan(
+    domain: str = Path(..., description="Domain name to scan"),
+    dkim_selector: Optional[str] = Query(None, description="DKIM selector to check")
+) -> Dict[str, Any]:
+    """
+    Perform a domain scan without authentication.
+    Analyzes DNS records relevant to email deliverability (SPF, DKIM, DMARC).
+    """
+    logger.info(f"Anonymous scan requested for domain: {domain} with DKIM selector: {dkim_selector}")
+    
+    try:
+        # Validate domain format
+        domain = domain.lower().strip()
+        
+        # Check cache first to reduce load
+        cache_key = f"anon_scan:{domain}:{dkim_selector or 'default'}"
+        cached_result = redis_client.get(cache_key)
+        
+        if cached_result:
+            logger.info(f"Returning cached result for {domain}")
+            return json.loads(cached_result)
+        
+        # Initialize scanner
+        scanner = DomainScanner(domain)
+        logger.info(f"Scanner initialized for domain: {domain}")
+        
+        # Perform the scan
+        scan_results = await scanner.scan_all(provided_dkim_selector=dkim_selector)
+        logger.info(f"Scan completed for domain {domain}")
+        
+        # Format results for response
+        # Extract the status string from the overall_status object
+        overall_status = "unknown"
+        if isinstance(scan_results["overall_status"], str):
+            overall_status = scan_results["overall_status"]
+        elif isinstance(scan_results["overall_status"], dict):
+            overall_status = scan_results["overall_status"].get("status", "unknown")
+        
+        # Format the response with proper structures
+        response = {
+            "domain": domain,
+            "overall_status": overall_status,
+            "timestamp": datetime.utcnow().isoformat(),
+            "spf_analysis": {
+                "record_type": "SPF",
+                "status": scan_results.get("spf", {}).get("status", "unknown"),
+                "value": scan_results.get("spf", {}).get("value", ""),
+                "issues": scan_results.get("spf", {}).get("issues", []),
+                "recommendations": []
+            },
+            "dkim_analysis": {
+                "record_type": "DKIM",
+                "status": scan_results.get("dkim", {}).get("status", "unknown"),
+                "value": scan_results.get("dkim", {}).get("value", ""),
+                "selector": dkim_selector,
+                "issues": scan_results.get("dkim", {}).get("issues", []),
+                "recommendations": []
+            },
+            "dmarc_analysis": {
+                "record_type": "DMARC",
+                "status": scan_results.get("dmarc", {}).get("status", "unknown"),
+                "value": scan_results.get("dmarc", {}).get("value", ""),
+                "issues": scan_results.get("dmarc", {}).get("issues", []),
+                "recommendations": []
+            }
+        }
+        
+        # Cache the result for 1 minutes
+        redis_client.set(cache_key, json.dumps(response), ex=60)
+        
+        return response
+        
+    except ValidationError as e:
+        logger.error(f"Validation error: {str(e)}")
+        raise HTTPException(status_code=400, detail=f"Invalid input: {str(e)}")
+    except Exception as e:
+        logger.error(f"Error scanning domain {domain}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Scan failed: {str(e)}")
+
+
+# Add these endpoints after the existing code
+
+@router.get("/scan-spf/{domain}", response_model=RecordAnalysis)
+async def scan_spf_record(
+    domain: str = Path(..., description="Domain to scan SPF record for")
+) -> Dict[str, Any]:
+    """
+    Scan only the SPF record for a domain.
+    Returns the record value, status, and any issues found.
+    """
+    logger.info(f"SPF scan requested for domain: {domain}")
+    
+    try:
+        # Validate domain format
+        domain = domain.lower().strip()
+        
+        # Check cache first to reduce load
+        cache_key = f"spf_scan:{domain}"
+        cached_result = redis_client.get(cache_key)
+        
+        if cached_result:
+            logger.info(f"Returning cached SPF result for {domain}")
+            return json.loads(cached_result)
+        
+        # Initialize scanner
+        scanner = DomainScanner(domain)
+        
+        # Only scan SPF
+        spf_result = await scanner.scan_spf()
+        logger.info(f"SPF scan completed for domain {domain}")
+        
+        # Format response
+        response = {
+            "record_type": "SPF",
+            "status": spf_result.get("status", "unknown"),
+            "value": spf_result.get("value", ""),
+            "issues": spf_result.get("issues", []),
+            "recommendations": generate_spf_recommendations(domain, spf_result)
+        }
+        
+        # Cache for 5 minutes
+        redis_client.set(cache_key, json.dumps(response), ex=300)
+        
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error scanning SPF for {domain}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"SPF scan failed: {str(e)}")
+
+
+@router.get("/scan-dkim/{domain}", response_model=RecordAnalysis)
+async def scan_dkim_record(
+    domain: str = Path(..., description="Domain to scan DKIM record for"),
+    selector: str = Query("default", description="DKIM selector to check")
+) -> Dict[str, Any]:
+    """
+    Scan only the DKIM record for a domain with the specified selector.
+    Returns the record value, status, and any issues found.
+    """
+    logger.info(f"DKIM scan requested for domain: {domain} with selector: {selector}")
+    
+    try:
+        # Validate domain format
+        domain = domain.lower().strip()
+        
+        # Check cache first to reduce load
+        cache_key = f"dkim_scan:{domain}:{selector}"
+        cached_result = redis_client.get(cache_key)
+        
+        if cached_result:
+            logger.info(f"Returning cached DKIM result for {domain}")
+            return json.loads(cached_result)
+        
+        # Initialize scanner
+        scanner = DomainScanner(domain)
+        
+        # Only scan DKIM with the provided selector
+        dkim_result = await scanner.scan_dkim(selector)
+        logger.info(f"DKIM scan completed for domain {domain} with selector {selector}")
+        
+        # Format response
+        response = {
+            "record_type": "DKIM",
+            "status": dkim_result.get("status", "unknown"),
+            "value": dkim_result.get("value", ""),
+            "selector": selector,
+            "issues": dkim_result.get("issues", []),
+            "recommendations": generate_dkim_recommendations(domain, dkim_result)
+        }
+        
+        # Cache for 5 minutes
+        redis_client.set(cache_key, json.dumps(response), ex=300)
+        
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error scanning DKIM for {domain}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"DKIM scan failed: {str(e)}")
+
+
+@router.get("/scan-dmarc/{domain}", response_model=RecordAnalysis)
+async def scan_dmarc_record(
+    domain: str = Path(..., description="Domain to scan DMARC record for")
+) -> Dict[str, Any]:
+    """
+    Scan only the DMARC record for a domain.
+    Returns the record value, status, and any issues found.
+    """
+    logger.info(f"DMARC scan requested for domain: {domain}")
+    
+    try:
+        # Validate domain format
+        domain = domain.lower().strip()
+        
+        # Check cache first to reduce load
+        cache_key = f"dmarc_scan:{domain}"
+        cached_result = redis_client.get(cache_key)
+        
+        if cached_result:
+            logger.info(f"Returning cached DMARC result for {domain}")
+            return json.loads(cached_result)
+        
+        # Initialize scanner
+        scanner = DomainScanner(domain)
+        
+        # Only scan DMARC
+        dmarc_result = await scanner.scan_dmarc()
+        logger.info(f"DMARC scan completed for domain {domain}")
+        
+        # Format response
+        response = {
+            "record_type": "DMARC",
+            "status": dmarc_result.get("status", "unknown"),
+            "value": dmarc_result.get("value", ""),
+            "issues": dmarc_result.get("issues", []),
+            "recommendations": generate_dmarc_recommendations(domain, dmarc_result)
+        }
+        
+        # Cache for 5 minutes
+        redis_client.set(cache_key, json.dumps(response), ex=300)
+        
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error scanning DMARC for {domain}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"DMARC scan failed: {str(e)}")

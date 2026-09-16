@@ -61,6 +61,7 @@ class Settings(BaseSettings):
     
     # Frontend URL for redirects after authentication
     FRONTEND_URL: str
+    BACKEND_URL: str
     
     class Config:
         """Pydantic config"""

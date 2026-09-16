@@ -26,7 +26,7 @@ config = Config(environ={"GOOGLE_CLIENT_ID": settings.GOOGLE_CLIENT_ID,
                         "GOOGLE_CLIENT_SECRET": settings.GOOGLE_CLIENT_SECRET})
 oauth = OAuth(config)
 
-REDIRECT_URI = "https://inbox-guard.online/api/v1/auth/google/callback"
+REDIRECT_URI = f"{settings.BACKEND_URL}/api/v1/auth/google/callback"
 if REDIRECT_URI.startswith("http://"):
     REDIRECT_URI = REDIRECT_URI.replace("http://", "https://")
 
@@ -41,8 +41,7 @@ google = oauth.register(
     }
 )
 
-# In your google_oauth.py
-REDIRECT_URI = "https://inbox-guard.online/api/v1/auth/google/callback"  # Hardcoded HTTPS
+REDIRECT_URI = f"{settings.BACKEND_URL}/api/v1/auth/google/callback"
 
 @router.get("/login")
 async def login(request: Request):
